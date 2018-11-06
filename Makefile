@@ -1,7 +1,7 @@
 .PHONY: launch
 launch:
-	reveal-md slides.md --disable-auto-open
+	reveal-md slides.md --highlight-theme tomorrow --disable-auto-open
 
 .PHONY: open
 open:
-	reveal-md slides.md
+	reveal-md slides.md --highlight-theme tomorrow

@@ -1,57 +1,3 @@
----
-theme: white
----
-
-## Good software <br/> engineering practices
-
-UE programmation
-
-Master bioinfo
-
-Automne 2018
-
-
----
-
-## Who am I?
-
-_Vincent Lanore_
-
-Send questions at:
-
-[vincent.lanore@univ-lyon1.fr](mailto:vincent.lanore@univ-lyon1.fr)
-
-
----
-
-## Reading fasta files
-
-```
->SEQUENCE_1
-MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR
->SEQUENCE_2
-SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH
-```
-
----
-
-### First step
-
-write a function that<br/>
-takes the path to a fasta file:
-```path
-~/data/example.fasta```
-and returns a list of sequences:
-```python
-[
-    ('SEQUENCE1', 'AGMMD...'),
-    ('SEQUENCE2', 'MMDGGAA...')
-]
-```
-
-----
-
-```python
 def read(fn):
     f = open(fn, 'r')
     ls = f.readlines()
@@ -62,21 +8,8 @@ def read(fn):
         else:
             r.append((n, l.strip()))
     return r
-```
-
-What's wrong with this code?
-<!-- .element: class="fragment" -->
-
----
-
-## Improving code readability
-
----
-
-<link href='custom.css' rel='stylesheet' type='text/css'>
 
 
-```python
 def read2(fn):
     """A function that reads the fasta file located at fn
     and outputs a list of sequences of the form
@@ -91,17 +24,13 @@ def read2(fn):
     n = ""  # buffer for sequence names
     for l in ls:
         # if the line starts by > this is a sequence name
-        if l[0] == '>':  
+        if l[0] == '>':
             n = l[1:].strip()  # store in the n buffer
         else:  # otherwise it's a sequence line
             # add tuple (name, sequence) to result
             r.append((n, l.strip()))
     return r
-```
 
-----
-
-```python
 def read_fasta(fasta_filename):
     """A function that reads the fasta file located at
     fasta_filename and outputs a list of sequences of the form
@@ -124,11 +53,7 @@ def read_fasta(fasta_filename):
             # add tuple (name, sequence) to result
             result.append((name_buffer, line.strip()))
     return result
-```
 
-----
-
-```python
 def read_fasta2(fasta_filename):
     """A function that reads the fasta file located at
     fasta_filename and outputs a list of sequences of the form
@@ -148,4 +73,6 @@ def read_fasta2(fasta_filename):
         else:  # otherwise it's a sequence line
             result.append((name_buffer, line.strip()))
     return result
-```
+
+
+print(read_fasta2("example.fasta"))
