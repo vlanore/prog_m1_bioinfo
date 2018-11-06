@@ -1,4 +1,4 @@
-## Good software engineering practices
+## Good software <br/> engineering practices
 
 UE programmation
 
@@ -9,13 +9,13 @@ Automne 2018
 
 ---
 
-### Who am I?
+## Who am I?
 
 _Vincent Lanore_
 
 Send questions at:
 
-[vincent.lanore@univ-lyon1.fr](vincent.lanore@univ-lyon1.fr)
+[vincent.lanore@univ-lyon1.fr](mailto:vincent.lanore@univ-lyon1.fr)
 
 
 ---
