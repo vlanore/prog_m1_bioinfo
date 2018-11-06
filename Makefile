@@ -1,4 +1,7 @@
-.PHONY: test
-test: index.html
-	cp index.html ../reveal.js
-	firefox localhost:8000
+.PHONY: launch
+launch:
+	reveal-md slides.md --highlight-theme tomorrow --theme beige --disable-auto-open
+
+.PHONY: open
+open:
+	reveal-md slides.md --highlight-theme tomorrow --theme beige
