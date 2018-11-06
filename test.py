@@ -12,8 +12,7 @@ def read(fn):
 
 def read2(fn):
     """A function that reads the fasta file located at fn
-    and outputs a list of sequences of the form
-    [('SEQUENCE1', 'MGAAL...'), ('SEQUENCE2', 'GAAMML...')]"""
+    and outputs a list of (name, sequence)"""
 
     # Step 1: reading file
     f = open(fn, 'r')
@@ -32,9 +31,8 @@ def read2(fn):
     return r
 
 def read_fasta(fasta_filename):
-    """A function that reads the fasta file located at
-    fasta_filename and outputs a list of sequences of the form
-    [('SEQUENCE1', 'MGAAL...'), ('SEQUENCE2', 'GAAMML...')]"""
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
 
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
@@ -45,8 +43,7 @@ def read_fasta(fasta_filename):
     name_buffer = ""  # buffer for sequence names
     for line in lines:
         # if the line starts by > this is a sequence name
-        is_sequence_name = (line[0] == '>')
-        if is_sequence_name:
+        if line[0] == '>':
             # store in the name buffer
             name_buffer = line[1:].strip()
         else:  # otherwise it's a sequence line
@@ -55,9 +52,8 @@ def read_fasta(fasta_filename):
     return result
 
 def read_fasta2(fasta_filename):
-    """A function that reads the fasta file located at
-    fasta_filename and outputs a list of sequences of the form
-    [('SEQUENCE1', 'MGAAL...'), ('SEQUENCE2', 'GAAMML...')]"""
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
 
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')

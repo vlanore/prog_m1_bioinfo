@@ -1,4 +1,4 @@
 {
   "transition": "slide",
-  "backgroundTransition": "zoom"
+  "backgroundTransition": "fade"
 }
