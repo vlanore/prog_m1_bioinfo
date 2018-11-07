@@ -32,9 +32,10 @@ Send questions at:
 
 ### Software engineering courses
 
-* today
-* next monday afternoon
-
+|             |               |          |                        |
+|-------------|---------------|----------|------------------------|
+| today       | 9:45am to 1pm | quai 43  | good coding practice   |
+| next monday | 2pm to 5:15pm | prefa B1 | object-oriented design |
 
 ---
 
