@@ -5,6 +5,12 @@ python:
   - "3.5"
   - "3.6"
 
+install:
+  - pip install coverage codecov
+
 # command to run tests
 script:
-  - python code/test.py
+  - coverage run code/test.py
+
+after_success:
+  - codecov --token=$(CODECOV_TOKEN)

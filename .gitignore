@@ -1,3 +1,4 @@
 __*
 *.pyx
 *vscode*
+*coverage*
