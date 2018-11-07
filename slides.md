@@ -174,8 +174,8 @@ def read(fn):
         # if the line starts by > this is a sequence name
         if l[0] == '>':  
             n = l[1:].strip()  # store in the n buffer
-        else:  # otherwise it's a sequence line
-            # add tuple (name, sequence) to result
+        else:  # otherwise it's sequence data
+            # add tuple (name, data) to result
             r.append((n, l.strip()))
     return r
 ```
@@ -201,8 +201,8 @@ def read_fasta(fasta_filename):
         if line[0] == '>':
             # store in the name buffer
             name_buffer = line[1:].strip()
-        else:  # otherwise it's a sequence line
-            # add tuple (name, sequence) to result
+        else:  # otherwise it's sequence data
+            # add tuple (name, data) to result
             result.append((name_buffer, line.strip()))
     return result
 ```
@@ -227,7 +227,7 @@ def read_fasta(fasta_filename):
         is_sequence_name = (line[0] == '>')
         if is_sequence_name:
             name_buffer = line[1:].strip()
-        else:  # otherwise it's a sequence line
+        else:  # otherwise it's sequence data
             result.append((name_buffer, line.strip()))
     return result
 ```
