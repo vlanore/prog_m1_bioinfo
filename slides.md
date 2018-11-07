@@ -2,13 +2,11 @@
 theme: white
 ---
 
-<!--=================================================================================================== -->
-<!-- INTRO -->
-<!--=================================================================================================== -->
-
 <link href='custom.css' rel='stylesheet' type='text/css'>
 
+<!--=================================================================================================== -->
 ## <h2 style="color:white;">Good software <br/> engineering practices</h2>
+<!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
 <!-- .slide: data-background="img/code.png" -->
 
@@ -41,12 +39,11 @@ Send questions at:
 ---
 
 <!--=================================================================================================== -->
-<!-- EXAMPLE: parsing fasta files -->
-<!--=================================================================================================== -->
-
 ## <h2 style="color:white;">Example:<br/>parsing FASTA files</h2>
+<!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
 <!-- .slide: data-background="img/code.png" -->
+
 
 ---
 
@@ -63,6 +60,7 @@ SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGAN
 
 Lines starting with `>` are sequence names<br/>
 they are followed by the sequence in plain text
+
 
 ---
 
@@ -89,6 +87,7 @@ and returns a list of sequences
     2. otherwise, add (_n_, _l_) to _r_
 4. Return _r_
 
+
 ----
 
 ### Implementation in python
@@ -114,13 +113,12 @@ Quick testing:
  ('SEQUENCE_2', 'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
 ```
 
+
 ---
 
 <!--=================================================================================================== -->
-<!-- Improving code readability -->
-<!--=================================================================================================== -->
-
 ## <h2 style="color:white;"> Improving code readability </h2>
+<!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
 <!-- .slide: data-background="img/code.png" -->
 
@@ -140,6 +138,7 @@ if l[0] == '>':
 ```
 <!-- .element: class="fragment" -->
 
+
 ---
 
 ### Adding documentation
@@ -155,6 +154,7 @@ def read(fn):
     and outputs a list of (name, sequence)"""
 ```
 <!-- .element: class="fragment" -->
+
 
 ---
 
@@ -179,6 +179,7 @@ def read(fn):
             r.append((n, l.strip()))
     return r
 ```
+
 
 ---
 
@@ -207,6 +208,7 @@ def read_fasta(fasta_filename):
     return result
 ```
 
+
 ---
 
 #### Self-documenting code
@@ -231,3 +233,115 @@ def read_fasta(fasta_filename):
             result.append((name_buffer, line.strip()))
     return result
 ```
+
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;"> Writing correct code </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Errors
+
+```python
+# Step 2: going through the lines
+result = [] 
+name_buffer = ""
+for line in lines:
+    is_sequence_name = (line[0] == '>')
+    if is_sequence_name:
+        ...
+    else: # otherwise it's sequence data
+        if name_buffer != "":
+            result.append((name_buffer, line.strip()))
+            name_buffer = ""
+        else:
+            print("ERROR: Sequence data does not follow a line with >")
+            sys.exit(1)
+```
+
+
+---
+
+### Warnings
+
+```python
+# Step 1: reading file
+fasta_file = open(fasta_filename, 'r')
+lines = fasta_file.readlines()
+if (len(lines) == 0):
+    print("WARNING: File " + fasta_filename + " is empty!")
+    return []
+```
+
+
+---
+
+<!-- .slide: style="font-size: 0.78em" -->
+
+```python
+def read_fasta(fasta_filename):
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
+
+    # Step 1: reading file
+    fasta_file = open(fasta_filename, 'r')
+    lines = fasta_file.readlines()
+    if (len(lines) == 0):
+        print("WARNING: File " + fasta_filename + " is empty!")
+        return []
+
+    # Step 2: going through the lines
+    result = [] 
+    name_buffer = ""
+    for line in lines:
+        is_sequence_name = (line[0] == '>')
+        if is_sequence_name:
+            if name_buffer == "":
+                name_buffer = line[1:].strip()
+            else:
+                print("ERROR: Two lines starting with > in a row")
+                sys.exit(1)
+        else: # otherwise it's sequence data
+            if name_buffer != "":
+                result.append((name_buffer, line.strip()))
+                name_buffer = ""
+            else:
+                print("ERROR: Sequence data does not follow a line with >")
+                sys.exit(1)
+    return result
+```
+
+
+---
+
+### Asserts
+
+```python
+# Step 2: going through the lines
+result = [] 
+name_buffer = ""
+for line in lines:
+    is_sequence_name = (line[0] == '>')
+    if is_sequence_name:
+        assert name_buffer == "", "Two lines with > in a row"
+        name_buffer = line[1:].strip()
+    else: # otherwise it's sequence data
+        assert name_buffer != "", "Data without sequence name"
+        result.append((name_buffer, line.strip()))
+        name_buffer = ""
+return result
+```
+
+---
+
+### Exceptions
+
+
+---
+
+### Logging

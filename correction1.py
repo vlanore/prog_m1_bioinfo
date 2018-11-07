@@ -36,6 +36,29 @@ def read_fasta(fasta_filename):
     return result
 
 
+def read_fasta3(fasta_filename):
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
+
+    # Step 1: reading file
+    fasta_file = open(fasta_filename, 'r')
+    lines = fasta_file.readlines()
+
+    # Step 2: going through the lines
+    result = [] 
+    name_buffer = ""
+    for line in lines:
+        is_sequence_name = (line[0] == '>')
+        if is_sequence_name:
+            assert name_buffer == "", "Two lines with > in a row"
+            name_buffer = line[1:].strip()
+        else: # otherwise it's sequence data
+            assert name_buffer != "", "Data without sequence name"
+            result.append((name_buffer, line.strip()))
+            name_buffer = ""
+    return result
+
+
 def read_fasta2(fasta_filename):
     """A function that reads the fasta file located at fn
     and outputs a list of (name, sequence)"""
