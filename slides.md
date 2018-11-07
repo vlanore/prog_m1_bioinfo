@@ -10,7 +10,7 @@ theme: white
 
 ## <h2 style="color:white;">Good software <br/> engineering practices</h2>
 <!-- .slide: style="color:white" -->
-<!-- .slide: data-background="code.png" -->
+<!-- .slide: data-background="img/code.png" -->
 
 UE programmation
 
@@ -46,7 +46,7 @@ Send questions at:
 
 ## <h2 style="color:white;">Example:<br/>parsing FASTA files</h2>
 <!-- .slide: style="color:white" -->
-<!-- .slide: data-background="code.png" -->
+<!-- .slide: data-background="img/code.png" -->
 
 ---
 
@@ -122,7 +122,7 @@ Quick testing:
 
 ## <h2 style="color:white;"> Improving code readability </h2>
 <!-- .slide: style="color:white" -->
-<!-- .slide: data-background="code.png" -->
+<!-- .slide: data-background="img/code.png" -->
 
 ---
 
