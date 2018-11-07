@@ -69,6 +69,3 @@ def read_fasta2(fasta_filename):
         else:  # otherwise it's a sequence line
             result.append((name_buffer, line.strip()))
     return result
-
-
-print(read_fasta2("example.fasta"))
