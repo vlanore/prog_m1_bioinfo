@@ -338,7 +338,7 @@ def read_fasta(fasta_filename):
     # Step 2: going through the lines
     result = []  # result (a list)
     name_buffer = ""  # buffer for sequence names
-    for line in lines:
+    for line in line_list:
         # if the line starts by > this is a sequence name
         if line[0] == '>':
             # store in the name buffer
@@ -405,7 +405,7 @@ def read_fasta(fasta_filename):
     # Step 2: going through the lines
     result = [] 
     name_buffer = ""
-    for line in lines:
+    for line in line_list:
         is_sequence_name = (line[0] == '>')
         if is_sequence_name:
             name_buffer = line[1:].strip()
@@ -458,7 +458,7 @@ def read_fasta(fasta_filename):
     # Step 2: going through the lines
     result = [] 
     name_buffer = ""
-    for line in lines:
+    for line in line_list:
         is_sequence_name = (line[0] == '>')
         if is_sequence_name:
             name_buffer = line[1:].strip()
@@ -473,7 +473,7 @@ def read_fasta(fasta_filename):
     # Step 2: going through the lines
     result = [] 
     name_buffer = ""
-    for line in lines:
+    for line in line_list:
         is_sequence_name = (line[0] == '>')
         if is_sequence_name:
             name_buffer = line[1:].strip()
@@ -486,10 +486,10 @@ can be changed to
 ```python
     # Step 2: going through the sequences
     result = []
-    nb_sequences = int(len(lines) / 2)
+    nb_sequences = int(len(line_list) / 2)
     for sequence_index in range(nb_sequences):
-        sequence_name = lines[sequence_index][1:].strip()
-        sequence_data = lines[sequence_index + 1].strip()
+        sequence_name = line_list[2 * sequence_index][1:].strip()
+        sequence_data = line_list[2 * sequence_index + 1].strip()
         result.append((sequence_name, sequence_data))
 ```
 
@@ -516,13 +516,28 @@ def read_fasta(fasta_filename):
 
     # Step 2: going through the sequences
     result = []
-    nb_sequences = int(len(lines) / 2)
+    nb_sequences = int(len(line_list) / 2)
     for sequence_index in range(nb_sequences):
-        sequence_name = lines[sequence_index][1:].strip()
-        sequence_data = lines[sequence_index + 1].strip()
+        sequence_name = line_list[2 * sequence_index][1:].strip()
+        sequence_data = line_list[2 * sequence_index + 1].strip()
         result.append((sequence_name, sequence_data))
     return result
 ```
+
+
+---
+
+### LIVE CODING: REFACTORING
+
+Refactoring of python script
+
+```txt
+code/ugly_code.py
+```
+
+from the github repository: 
+
+https://github.com/vlanore/prog_m1_bioinfo
 
 
 ---
@@ -541,7 +556,7 @@ def read_fasta(fasta_filename):
 # Step 2: going through the lines
 result = [] 
 name_buffer = ""
-for line in lines:
+for line in line_list:
     is_sequence_name = (line[0] == '>')
     if is_sequence_name:
         ...
@@ -588,7 +603,7 @@ def read_fasta(fasta_filename):
     # Step 2: going through the lines
     result = [] 
     name_buffer = ""
-    for line in lines:
+    for line in line_list:
         is_sequence_name = (line[0] == '>')
         if is_sequence_name:
             if name_buffer == "":
@@ -615,7 +630,7 @@ def read_fasta(fasta_filename):
 # Step 2: going through the lines
 result = [] 
 name_buffer = ""
-for line in lines:
+for line in line_list:
     is_sequence_name = (line[0] == '>')
     if is_sequence_name:
         assert name_buffer == "", "Two lines with > in a row"
