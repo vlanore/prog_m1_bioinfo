@@ -273,6 +273,8 @@ def read(fn):
 
 ---
 
+#### Updated example
+
 ```python
 def read(fn):
     """A function that reads the fasta file located at fn
@@ -298,7 +300,31 @@ def read(fn):
 
 ---
 
-#### Better names
+### Better names
+
+__Variable names__ and __function names__<br/>can be used to clarify code
+
+Give them names with __meaning__
+
+----
+
+For example, don't write
+
+```python
+r = []
+n = ""
+```
+
+but instead write
+
+```python
+result = []
+name_buffer = ""
+```
+
+----
+
+#### Updated example
 
 ```python
 def read_fasta(fasta_filename):
@@ -307,7 +333,7 @@ def read_fasta(fasta_filename):
 
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
-    lines = fasta_file.readlines()
+    line_list = fasta_file.readlines()
 
     # Step 2: going through the lines
     result = []  # result (a list)
@@ -326,7 +352,46 @@ def read_fasta(fasta_filename):
 
 ---
 
-#### Self-documenting code
+### Self-documenting code
+
+Simple code with good variable names<br/> is often __self-explanatory__
+
+Example:
+
+```python
+# Step 1: reading file
+fasta_file = open(fasta_filename, 'r')
+line_list = fasta_file.readlines()
+```
+
+----
+
+Comments can become useless
+
+```python
+result = []  # result (a list)
+name_buffer = ""  # buffer for sequence names
+```
+
+----
+
+Sometimes, rewriting can help<br/>clarify without comments
+
+```python
+# if the line starts by > this is a sequence name
+if line[0] == '>':
+    ...
+```
+
+could instead be written
+
+```python
+is_sequence_name = (line[0] == '>')
+if is_sequence_name:
+    ...
+```
+
+----
 
 ```python
 def read_fasta(fasta_filename):
@@ -335,7 +400,7 @@ def read_fasta(fasta_filename):
 
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
-    lines = fasta_file.readlines()
+    line_list = fasta_file.readlines()
 
     # Step 2: going through the lines
     result = [] 
@@ -346,6 +411,116 @@ def read_fasta(fasta_filename):
             name_buffer = line[1:].strip()
         else:  # otherwise it's sequence data
             result.append((name_buffer, line.strip()))
+    return result
+```
+
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;"> Code refactoring </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+> __Refactoring__ is the process or rewriting code to make it better without changing what it does
+
+<img src="img/messy.jpg" alt="drawing" style="width:300px;"/>
+<img src="img/organized.jpg" alt="drawing" style="width:300px;"/>
+
+----
+
+<p style="margin-left:-300px">Examples of refactoring operations:<p>
+
+* making code clearer (comments, names, doc)
+* reorganizing
+* code factorization
+* use better algorithms
+
+
+---
+
+### Refactoring example
+
+We could simplify the contents of the for loop
+
+```python
+def read_fasta(fasta_filename):
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
+
+    # Step 1: reading file
+    fasta_file = open(fasta_filename, 'r')
+    line_list = fasta_file.readlines()
+
+    # Step 2: going through the lines
+    result = [] 
+    name_buffer = ""
+    for line in lines:
+        is_sequence_name = (line[0] == '>')
+        if is_sequence_name:
+            name_buffer = line[1:].strip()
+        else:  # otherwise it's sequence data
+            result.append((name_buffer, line.strip()))
+    return result
+```
+
+----
+
+```python
+    # Step 2: going through the lines
+    result = [] 
+    name_buffer = ""
+    for line in lines:
+        is_sequence_name = (line[0] == '>')
+        if is_sequence_name:
+            name_buffer = line[1:].strip()
+        else:  # otherwise it's sequence data
+            result.append((name_buffer, line.strip()))
+```
+
+can be changed to
+
+```python
+    # Step 2: going through the sequences
+    result = []
+    nb_sequences = int(len(lines) / 2)
+    for sequence_index in range(nb_sequences):
+        sequence_name = lines[sequence_index][1:].strip()
+        sequence_data = lines[sequence_index + 1].strip()
+        result.append((sequence_name, sequence_data))
+```
+
+----
+
+### Benefits
+<!-- .slide: style="font-size: 0.9em" -->
+
+* code is shorter
+* code is less complex (no nested control structures)
+* fact that data follows sequence name is more apparent
+* name buffer was confusing and error-prone
+
+----
+
+```python
+def read_fasta(fasta_filename):
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
+
+    # Step 1: reading file
+    fasta_file = open(fasta_filename, 'r')
+    line_list = fasta_file.readlines()
+
+    # Step 2: going through the sequences
+    result = []
+    nb_sequences = int(len(lines) / 2)
+    for sequence_index in range(nb_sequences):
+        sequence_name = lines[sequence_index][1:].strip()
+        sequence_data = lines[sequence_index + 1].strip()
+        result.append((sequence_name, sequence_data))
     return result
 ```
 
@@ -387,7 +562,7 @@ for line in lines:
 ```python
 # Step 1: reading file
 fasta_file = open(fasta_filename, 'r')
-lines = fasta_file.readlines()
+line_list = fasta_file.readlines()
 if (len(lines) == 0):
     print("WARNING: File " + fasta_filename + " is empty!")
     return []
@@ -405,7 +580,7 @@ def read_fasta(fasta_filename):
 
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
-    lines = fasta_file.readlines()
+    line_list = fasta_file.readlines()
     if (len(lines) == 0):
         print("WARNING: File " + fasta_filename + " is empty!")
         return []
