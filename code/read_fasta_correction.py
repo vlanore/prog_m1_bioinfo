@@ -11,16 +11,16 @@ def read_fasta(fasta_filename):
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
     line_list = fasta_file.readlines()
+    if (len(line_list) == 0):
+        print("Warning: File " + fasta_filename + " is empty!")
 
     # Step 2: going through the sequences
     result = []
     nb_sequences = int(len(line_list) / 2)
     for sequence_index in range(nb_sequences):
         first_line_index = 2 * sequence_index
-        if (line_list[first_line_index][0] != '>'):
-            print("Line " + str(first_line_index)
-                + " does not start with >")
-            sys.exit(1)
+        assert line_list[first_line_index][0] == '>'
+        assert line_list[first_line_index + 1][0] != '>'
         sequence_name = line_list[first_line_index][1:].strip()
         sequence_data = line_list[first_line_index + 1].strip()
         result.append((sequence_name, sequence_data))

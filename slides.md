@@ -569,27 +569,18 @@ Sometimes, code will do something wrong
 ----
 
 ```python
-def read_fasta(fasta_filename):
-    """A function that reads the fasta file located at fn
-    and outputs a list of (name, sequence)"""
-
-    # Step 1: reading file
-    fasta_file = open(fasta_filename, 'r')
-    line_list = fasta_file.readlines()
-
     # Step 2: going through the sequences
     result = []
     nb_sequences = int(len(line_list) / 2)
     for sequence_index in range(nb_sequences):
         first_line_index = 2 * sequence_index
         if (line_list[first_line_index][0] != '>'):
-            print("Line " + str(first_line_index)
+            print("Error: Line " + str(first_line_index)
                 + " does not start with >")
             sys.exit(1)
         sequence_name = line_list[first_line_index][1:].strip()
         sequence_data = line_list[first_line_index + 1].strip()
         result.append((sequence_name, sequence_data))
-    return result
 ```
 
 
@@ -609,8 +600,8 @@ __Example:__ Empty fasta file might be a user error
 # Step 1: reading file
 fasta_file = open(fasta_filename, 'r')
 line_list = fasta_file.readlines()
-if (len(lines) == 0):
-    print("WARNING: File " + fasta_filename + " is empty!")
+if (len(line_list) == 0):
+    print("Warning: File " + fasta_filename + " is empty!")
 ```
 
 
@@ -626,28 +617,25 @@ def read_fasta(fasta_filename):
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
     line_list = fasta_file.readlines()
-    if (len(lines) == 0):
-        print("WARNING: File " + fasta_filename + " is empty!")
-        return []
+    if (len(line_list) == 0):
+        print("Warning: File " + fasta_filename + " is empty!")
 
-    # Step 2: going through the lines
-    result = [] 
-    name_buffer = ""
-    for line in line_list:
-        is_sequence_name = (line[0] == '>')
-        if is_sequence_name:
-            if name_buffer == "":
-                name_buffer = line[1:].strip()
-            else:
-                print("ERROR: Two lines starting with > in a row")
-                sys.exit(1)
-        else: # otherwise it's sequence data
-            if name_buffer != "":
-                result.append((name_buffer, line.strip()))
-                name_buffer = ""
-            else:
-                print("ERROR: Sequence data does not follow a line with >")
-                sys.exit(1)
+    # Step 2: going through the sequences
+    result = []
+    nb_sequences = int(len(line_list) / 2)
+    for sequence_index in range(nb_sequences):
+        first_line_index = 2 * sequence_index
+        if (line_list[first_line_index][0] != '>'):
+            print("Error: Line " + str(first_line_index)
+                + " does not start with >")
+            sys.exit(1)
+        if (line_list[first_line_index + 1][0] == '>'):
+            print("Error: Line " + str(first_line_index + 1)
+                + " starts with >")
+            sys.exit(1)
+        sequence_name = line_list[first_line_index][1:].strip()
+        sequence_data = line_list[first_line_index + 1].strip()
+        result.append((sequence_name, sequence_data))
     return result
 ```
 
@@ -656,20 +644,53 @@ def read_fasta(fasta_filename):
 
 ### Asserts
 
+In practice, many errors are just checking<br/>for a condition that must be true
+
+Having many cases like this is verbose
+
 ```python
-# Step 2: going through the lines
-result = [] 
-name_buffer = ""
-for line in line_list:
-    is_sequence_name = (line[0] == '>')
-    if is_sequence_name:
-        assert name_buffer == "", "Two lines with > in a row"
-        name_buffer = line[1:].strip()
-    else: # otherwise it's sequence data
-        assert name_buffer != "", "Data without sequence name"
-        result.append((name_buffer, line.strip()))
-        name_buffer = ""
-return result
+if (line_list[first_line_index + 1][0] == '>'):
+    print("Error: Line " + str(first_line_index + 1)
+        + " starts with >")
+    sys.exit(1)
+```
+
+----
+
+Instead one can just write
+```python
+assert condition 
+```
+or
+```python
+assert condition, "message"
+```
+to check a condition and fail if it is not met
+
+----
+
+```python
+def read_fasta(fasta_filename):
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
+
+    # Step 1: reading file
+    fasta_file = open(fasta_filename, 'r')
+    line_list = fasta_file.readlines()
+    if (len(line_list) == 0):
+        print("Warning: File " + fasta_filename + " is empty!")
+
+    # Step 2: going through the sequences
+    result = []
+    nb_sequences = int(len(line_list) / 2)
+    for sequence_index in range(nb_sequences):
+        first_line_index = 2 * sequence_index
+        assert line_list[first_line_index][0] == '>'
+        assert line_list[first_line_index + 1][0] != '>'
+        sequence_name = line_list[first_line_index][1:].strip()
+        sequence_data = line_list[first_line_index + 1].strip()
+        result.append((sequence_name, sequence_data))
+    return result
 ```
 
 ---
