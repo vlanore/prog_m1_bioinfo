@@ -759,7 +759,7 @@ print(read_fasta(read_fasta))
 
 ---
 
-### Automating tests
+### Automating test results
 
 Instead of checking by reading the output,<br/>
 write checks inside the tests
@@ -821,3 +821,113 @@ if (expected_data != observed_data):
 else:
     print("Test succeeded!")
 ```
+
+---
+
+### Run tests often
+
+Running tests is cheap, do it often
+
+At the very least, run tests before a new commit
+
+---
+
+### Automating test launch
+
+Platforms exist to run tests for you<br/>and warn you if they fail
+
+----
+
+#### Example: Travis CI
+
+<p style="margin-left:-500px">Website with github integration</p>
+
+* run tests every time you push to a github repository
+* can test on various systems (unic, mac OS)
+* can test different language versions
+
+----
+
+#### Travis setup
+
+Register your repo on https://travis-ci.org/
+
+Add a `.travis.yml` configuration file to your repo
+
+```yaml
+language: python
+python:
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+# command to run tests
+script:
+  - bash tests.sh
+```
+
+----
+
+#### Travis demo
+
+---
+
+### Code coverage
+
+> __Coverage__: all the lines of code covered by automated tests
+
+Code that is covered by tests is less likely to have bugs
+
+Coverage should be as high as possible
+
+----
+
+#### Coverage tools
+
+In python, the `coverage` tool can measure coverage
+
+Install
+```bash
+$ pip install coverage
+```
+run
+```
+coverage run code/test_read_fasta.py
+```
+output a `.coverage` file to be used by other tools
+
+----
+
+#### Automated coverage reports
+
+There exist platforms to handle coverage<br/>reports from automated tests
+
+For example, https://codecov.io/ can<br/>be integrated with travis tests
+
+----
+
+#### Codecov setup
+
+* register you repo on https://codecov.io/
+* add secret token to travis env variables
+* update `.travis.yml`
+
+```yaml
+language: python
+python:
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+install: # install coverage reporting tool
+  - pip install coverage codecov
+script: # command to run tests
+  - coverage run code/test.py
+after_success: # send coverage report
+  - codecov --token=$(CODECOV_TOKEN)
+```
+
+----
+
+#### Codecov demo
