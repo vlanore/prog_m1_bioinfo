@@ -85,5 +85,6 @@ def read_fasta2(fasta_filename):
     logging.info("Step 3: everything went fine; returning result")
     return result
 
-print(read_fasta("data/example.fasta"))
-print(read_fasta("data/example2.fasta"))
+if __name__ == "__main__":
+    print(read_fasta("data/example.fasta"))
+    print(read_fasta("data/example2.fasta"))

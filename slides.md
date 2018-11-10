@@ -693,11 +693,131 @@ def read_fasta(fasta_filename):
     return result
 ```
 
----
-
-### Exceptions
-
+<!-- --- -->
+<!-- ### Exceptions -->
 
 ---
 
 ### Logging
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;"> Parsing command line arguments </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+https://github.com/vlanore/docopt-boiteaoutils
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;"> Testing </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Untested code is probably wrong
+
+Making mistakes while coding is easy
+
+You should __always__ test your code to see if it works
+
+---
+
+### Testing by hand
+
+For example, adding code at the end of the file
+
+```python
+if __name__ == "__main__":
+    print(read_fasta("data/example.fasta"))
+```
+
+and run
+
+```bash
+$ python code/read_fasta.py
+[('SEQUENCE_1', 'MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR'), ('SEQUENCE_2', 'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
+```
+
+----
+
+
+Or, write a `test_read_fasta.py` file
+
+```python
+from read_fasta import read_fasta
+
+print(read_fasta(read_fasta))
+```
+
+---
+
+### Automating tests
+
+Instead of checking by reading the output,<br/>
+write checks inside the tests
+
+```python
+import sys
+from read_fasta import read_fasta
+
+expected_data = [('SEQUENCE_1', 'MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR'),
+    ('SEQUENCE_2', 'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
+observed_data = read_fasta("data/example.fasta")
+if (expected_data != observed_data):
+    print("Test failed!")
+    sys.exit(1)
+else:
+    print("Test succeeded!")
+```
+
+----
+
+#### Run automated tests in bulk
+
+Automated tests can be run all at once
+
+For example, write a bash script or a makefile
+```bash
+#!/bin/bash
+
+python code/test_read_fasta.py
+python code/test_other_func.py
+python code/test_something_else.py
+python code/test_various.py
+```
+
+---
+
+### Catching regressions with tests
+
+New code can break things
+
+Breaking things is called a __regression__
+
+__Non-regression__ tests are <br/>made to catch regressions
+
+----
+
+If we break `read_fasta` this test will catch it
+
+```python
+import sys
+from read_fasta import read_fasta
+
+expected_data = [('SEQUENCE_1', 'MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR'),
+    ('SEQUENCE_2', 'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
+observed_data = read_fasta("data/example.fasta")
+if (expected_data != observed_data):
+    print("Test failed!")
+    sys.exit(1)
+else:
+    print("Test succeeded!")
+```
