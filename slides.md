@@ -552,21 +552,44 @@ https://github.com/vlanore/prog_m1_bioinfo
 
 ### Errors
 
+Sometimes, code will do something wrong
+
+* wrong parameters
+* bug
+* hardware/system faults
+* ...
+
+----
+
+<div style="margin-left:-200px">Code should handle these errors</div>
+
+* display a message
+* avoid continuing with invalid state
+
+----
+
 ```python
-# Step 2: going through the lines
-result = [] 
-name_buffer = ""
-for line in line_list:
-    is_sequence_name = (line[0] == '>')
-    if is_sequence_name:
-        ...
-    else: # otherwise it's sequence data
-        if name_buffer != "":
-            result.append((name_buffer, line.strip()))
-            name_buffer = ""
-        else:
-            print("ERROR: Sequence data does not follow a line with >")
+def read_fasta(fasta_filename):
+    """A function that reads the fasta file located at fn
+    and outputs a list of (name, sequence)"""
+
+    # Step 1: reading file
+    fasta_file = open(fasta_filename, 'r')
+    line_list = fasta_file.readlines()
+
+    # Step 2: going through the sequences
+    result = []
+    nb_sequences = int(len(line_list) / 2)
+    for sequence_index in range(nb_sequences):
+        first_line_index = 2 * sequence_index
+        if (line_list[first_line_index][0] != '>'):
+            print("Line " + str(first_line_index)
+                + " does not start with >")
             sys.exit(1)
+        sequence_name = line_list[first_line_index][1:].strip()
+        sequence_data = line_list[first_line_index + 1].strip()
+        result.append((sequence_name, sequence_data))
+    return result
 ```
 
 
@@ -574,13 +597,20 @@ for line in line_list:
 
 ### Warnings
 
+Some behaviours are not technically<br/>errors but look _suspicious_
+
+Displaying a message to __warn__<br/>the user can help detect problems
+
+----
+
+__Example:__ Empty fasta file might be a user error
+
 ```python
 # Step 1: reading file
 fasta_file = open(fasta_filename, 'r')
 line_list = fasta_file.readlines()
 if (len(lines) == 0):
     print("WARNING: File " + fasta_filename + " is empty!")
-    return []
 ```
 
 

@@ -10,29 +10,20 @@ def read_fasta(fasta_filename):
 
     # Step 1: reading file
     fasta_file = open(fasta_filename, 'r')
-    lines = fasta_file.readlines()
-    if (len(lines) == 0):
-        print("WARNING: File " + fasta_filename + " is empty!")
-        return []
+    line_list = fasta_file.readlines()
 
-    # Step 2: going through the lines
-    result = [] 
-    name_buffer = ""
-    for line in lines:
-        is_sequence_name = (line[0] == '>')
-        if is_sequence_name:
-            if name_buffer == "":
-                name_buffer = line[1:].strip()
-            else:
-                print("ERROR: Two lines starting with > in a row")
-                sys.exit(1)
-        else: # otherwise it's sequence data
-            if name_buffer != "":
-                result.append((name_buffer, line.strip()))
-                name_buffer = ""
-            else:
-                print("ERROR: Sequence data does not follow a line with >")
-                sys.exit(1)
+    # Step 2: going through the sequences
+    result = []
+    nb_sequences = int(len(line_list) / 2)
+    for sequence_index in range(nb_sequences):
+        first_line_index = 2 * sequence_index
+        if (line_list[first_line_index][0] != '>'):
+            print("Line " + str(first_line_index)
+                + " does not start with >")
+            sys.exit(1)
+        sequence_name = line_list[first_line_index][1:].strip()
+        sequence_data = line_list[first_line_index + 1].strip()
+        result.append((sequence_name, sequence_data))
     return result
 
 
@@ -93,3 +84,6 @@ def read_fasta2(fasta_filename):
 
     logging.info("Step 3: everything went fine; returning result")
     return result
+
+print(read_fasta("data/example.fasta"))
+print(read_fasta("data/example2.fasta"))
