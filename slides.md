@@ -700,6 +700,60 @@ def read_fasta(fasta_filename):
 
 ### Logging
 
+Sometimes, it's useful to display general info
+
+* to help debug code
+* to inform user of what's happening
+* to keep a trace
+
+----
+
+Can be done by hand
+
+```python
+# Step 1: reading file
+print("Opening fasta file!")
+fasta_file = open(fasta_filename, 'r')
+line_list = fasta_file.readlines()
+print("Done.")
+```
+
+----
+
+Can be done using a lib
+
+```python
+import logging
+```
+
+```python
+logging.info("Opening fasta file!")
+fasta_file = open(fasta_filename, 'r')
+line_list = fasta_file.readlines()
+logging.info("Done.")
+```
+
+----
+
+Messages are divided into levels
+
+* critical (very important)
+* errors (important)
+* warning
+* info
+* debug (not useful most of the time)
+
+----
+
+Levels can be turned on/off, customized or sent to files
+
+In main file:
+```python
+logging.basicConfig(filename='example.log',level=logging.DEBUG)
+```
+
+See `code/read_fasta_logging.py` in repository
+
 ---
 
 <!--=================================================================================================== -->
