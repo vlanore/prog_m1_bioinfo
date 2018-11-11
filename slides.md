@@ -462,7 +462,7 @@ Find a style that suits you<br/>and your collaborators!
 ---
 
 <!--=================================================================================================== -->
-## <h2 style="color:white;"> Organizing your project files </h2>
+## <h2 style="color:white;"> Organizing your<br/>project files</h2>
 <!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
 <!-- .slide: data-background="img/code.png" -->
@@ -489,6 +489,18 @@ Put the license text in the project folder,<br/>typically in a `LICENSE` file
 
 ---
 
+### Organize using subfolders
+
+* general config and info files at the top
+* folder for source code (typically `src/`)
+* folder for data
+* folder for utility scripts
+* ...
+
+----
+
+#### typical project data structure
+
 ```txt
 .
 ├── data
@@ -502,13 +514,19 @@ Put the license text in the project folder,<br/>typically in a `LICENSE` file
 ├── scripts
 │   ├── dataset_levure.R
 │   ├── dataset_levure.sh
-├── src
-│   ├── arrays.hpp
-│   ├── chrono.hpp
-│   ├── test.cpp
-│   └── utils.hpp
+└── src
+    ├── arrays.hpp
+    ├── chrono.hpp
+    ├── test.cpp
+    └── utils.hpp
 ```
 
+---
+
+### Version control
+
+Always use version control (_e.g.,_ git) for your code,<br/>
+even when it's small
 
 ---
 
