@@ -543,6 +543,18 @@ https://github.com/vlanore/prog_m1_bioinfo
 ---
 
 <!--=================================================================================================== -->
+## <h2 style="color:white;"> Parsing command line arguments </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+https://github.com/vlanore/docopt-boiteaoutils
+
+---
+
+<!--=================================================================================================== -->
 ## <h2 style="color:white;"> Writing correct code </h2>
 <!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
@@ -753,18 +765,6 @@ logging.basicConfig(filename='example.log',level=logging.DEBUG)
 ```
 
 See `code/read_fasta_logging.py` in repository
-
----
-
-<!--=================================================================================================== -->
-## <h2 style="color:white;"> Parsing command line arguments </h2>
-<!--=================================================================================================== -->
-<!-- .slide: style="color:white" -->
-<!-- .slide: data-background="img/code.png" -->
-
----
-
-https://github.com/vlanore/docopt-boiteaoutils
 
 ---
 
