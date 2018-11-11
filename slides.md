@@ -43,7 +43,7 @@ Send questions at:
 
 Slides are available at http://vlanore.eu:1948
 
-Example code is available at https://github.com/vlanore/prog_m1_bioinfo
+Example code is available at<br/> https://github.com/vlanore/prog_m1_bioinfo
 
 
 ---
@@ -421,6 +421,39 @@ def read_fasta(fasta_filename):
     return result
 ```
 
+---
+
+### Indentation
+
+Indentation and spacing are important for clarity
+
+* break or avoid long lines
+* highlight structure
+
+(In python indentation is mandatory)
+
+----
+
+### Automatic indentation
+
+Using text editors or dedicated tools
+
+* easier to use
+* more consistent across files
+* more consistent across users
+
+----
+
+#### Indentation examples
+
+---
+
+### Code clarity recap
+
+* use comments
+* provide documentation
+* strive for self-documenting code
+* use indent and spacing to organize
 
 ---
 
