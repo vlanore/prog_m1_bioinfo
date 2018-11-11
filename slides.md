@@ -455,6 +455,61 @@ Using text editors or dedicated tools
 * strive for self-documenting code
 * use indent and spacing to organize
 
+----
+
+Find a style that suits you<br/>and your collaborators!
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;"> Organizing your project files </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### README
+
+Write a readme, _i.e.,_ a small text file that
+
+* explains what your code is
+* how to install/use it
+
+File name is usually `README`, `README.txt`<br/>or `README.md` (markdown)
+
+---
+
+### License
+
+If you publish your code (_e.g.,_ on github)<br/>
+choose a license for it
+
+Put the license text in the project folder,<br/>typically in a `LICENSE` file
+
+---
+
+```txt
+.
+├── data
+│   ├── besnard
+│   │   ├── cyp_coding.Chrysithr_root.nhx
+│   │   ├── cyp_coding.fna
+│   │   └── cyp_coding.phy
+├── LICENSE.txt
+├── Makefile
+├── README.md
+├── scripts
+│   ├── dataset_levure.R
+│   ├── dataset_levure.sh
+├── src
+│   ├── arrays.hpp
+│   ├── chrono.hpp
+│   ├── test.cpp
+│   └── utils.hpp
+```
+
+
 ---
 
 <!--=================================================================================================== -->
