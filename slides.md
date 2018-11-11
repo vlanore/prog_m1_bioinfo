@@ -931,3 +931,38 @@ after_success: # send coverage report
 ----
 
 #### Codecov demo
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;"> Conclusion </h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Conclusion
+
+Today we've seen various techniques and<br/> advice to write better code
+
+* how to write clear code
+* code refactoring
+* write good command line interfaces
+* code testing and code coverage
+
+----
+
+Code testing is __very important__
+
+Try to always test your code
+
+----
+
+Refactoring is __important__
+
+Try to spend some time reading<br/>and improving your code
+
+---
+
+Next monday, we will talk about __object-based design__<br/>and how to write good object-oriented design
