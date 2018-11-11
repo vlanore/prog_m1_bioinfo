@@ -41,6 +41,13 @@ Send questions at:
 
 ---
 
+Slides are available at http://vlanore.eu:1948
+
+Example code is available at https://github.com/vlanore/prog_m1_bioinfo
+
+
+---
+
 <!--=================================================================================================== -->
 ## <h2 style="color:white;">Introduction</h2>
 <!--=================================================================================================== -->
