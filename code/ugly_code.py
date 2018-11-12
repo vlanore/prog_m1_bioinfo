@@ -1,37 +1,36 @@
+"""This script displays a bar plot of amino
+acid counts in a fasta file"""
+
 import read_fasta, matplotlib.pyplot, sys
 
-f = read_fasta.read_fasta("data/example.fasta")
+sequence_list = read_fasta.read_fasta("data/example.fasta")
 
-rr = []
-for s in f:
-    r = []
-    for l in s[1]:
-        le = False
-        il = 0
-        for i in range(len(r)):
-            if r[i][0] == l:
-                le = True
-                il = i
-                break
-        if not le:
-            r.append((l, 1))
+def count_letters(sequence):
+    """Counts occurences of letters in sequence"""
+    intermediate_result = {}
+    for letter in sequence[1]:
+        print(intermediate_result)
+        letter_exists = letter in intermediate_result.keys()
+        if not letter_exists:
+            intermediate_result[letter] = 1
         else:
-            r[i] = (l, r[i][1] + 1)
-    r = sorted(r)
-    t = 0
-    for e in r:
-        t += e[1]
-    ls = []
-    c = []
-    for e in r:
-        ls.append(e[0])
-        c.append(e[1])
+            intermediate_result[letter] += 1
+    # intermediate_result = sorted(intermediate_result)
+    return sorted(intermediate_result.items())
 
-    print(r)
-    print(t)
-    print(ls)
-    rr.append((s[0], ls, c))
+result = []
+for sequence in sequence_list:
+    count_dict = count_letters(sequence)
+    letters = []
+    counts = []
+    for entry in count_dict:
+        letters.append(entry[0])
+        counts.append(entry[1])
 
-matplotlib.pyplot.bar(rr[0][1], rr[0][2])
-matplotlib.pyplot.bar(rr[0][1], rr[1][2], bottom=rr[0][2])
+    print(count_dict)
+    print(letters)
+    result.append((letters, counts))
+
+matplotlib.pyplot.bar(result[0][0], result[0][1])
+matplotlib.pyplot.bar(result[0][0], result[1][1], bottom=result[0][1])
 matplotlib.pyplot.show()
