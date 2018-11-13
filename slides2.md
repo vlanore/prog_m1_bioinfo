@@ -19,4 +19,16 @@ Automne 2018
 
 ---
 
-test
+* rappels orienté object
+    * interfaces
+    * polymorphisme
+* enjeux:
+    * code flexible ?
+    * factorisation ?
+    * réutilisation ?
+* composition / héritage
+    * liskov principle
+* invariants, pré/ost conditions
+* MVC
+* sérialisation
+* code générique (type / collection hétérogènes)
