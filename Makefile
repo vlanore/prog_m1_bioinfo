@@ -1,7 +1,9 @@
 .PHONY: launch
 launch:
-	reveal-md slides.md --highlight-theme tomorrow --disable-auto-open
+	if pgrep node; then kill `pgrep node`; fi
+	reveal-md slides.md --highlight-theme tomorrow --disable-auto-open > reveal.output &
 
 .PHONY: open
 open:
-	reveal-md slides.md --highlight-theme tomorrow
+	if pgrep node; then kill `pgrep node`; fi
+	reveal-md slides.md --highlight-theme tomorrow > reveal.output &
