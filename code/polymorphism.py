@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class DataInterface(ABC):
     @abstractmethod
     def size(self):
@@ -8,6 +9,7 @@ class DataInterface(ABC):
     @abstractmethod
     def sum(self):
         pass
+
 
 class DataPoint(DataInterface):
     def __init__(self, value):
@@ -40,7 +42,13 @@ class DataCollection(DataInterface):
 
 
 if __name__ == "__main__":
-    my_list = DataCollection([DataPoint(3), DataPoint(5), DataCollection(
-        [DataCollection([2, 7, 2.3]), 3, 5]), DataPoint(7)])
+    my_list = DataCollection([
+        DataPoint(3),
+        DataPoint(5),
+        DataCollection([
+            DataCollection([2, 7, 2.3]), 3, 5
+        ]),
+        DataPoint(7)
+    ])
     print("Collection has size {} and sum {}".format(
         my_list.size(), my_list.sum()))
