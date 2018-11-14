@@ -177,6 +177,198 @@ True
 * une classe peut __hériter__ d'une autre pour récuperer attributs et méthodes
     * une classe fille peut __redéfinir une méthode__ d'une classe mère
 
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Le polymorphisme</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Le polymorphisme
+
+> __Polymorphisme:__ possibilité d'interagir avec des objets de différents types de façon unifiée
+
+```python
+>>> add(1, 2)
+3
+>>> add(1, 2.3)
+3.3
+>>> add("a", "b")
+'ab'
+```
+
+---
+
+### Opérations polymorphes en python
+
+```python
+>>> 1 + 2
+3
+>>> "a" + "b"
+'ab'
+```
+
+```python
+>>> 2 * 3
+6
+>>> "a" * 3
+'aaa'
+```
+
+```python
+>>> len([1, 2, 3])
+3
+>>> len((1,2))
+2
+>>> len({1:3, 2:4})
+2
+```
+
+etc...
+
+----
+
+#### Ma fonction polymorphe
+
+```python
+def add(a, b):
+    return a + b
+```
+
+```python
+>>> add(1, 2)
+3
+>>> add(1, 2.3)
+3.3
+>>> add("a", "b")
+'ab'
+```
+
+---
+
+### Polymorphisme en<br/>manipulant les types
+
+```python
+def sum(l):
+    result = 0
+    for element in l:
+        result += element
+    return result
+```
+
+```python
+>>> sum([1, 2, 3])
+6
+>>> sum(["a", "b", "c"])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 4, in sum
+TypeError: unsupported operand type(s) for +=: 'int' and 'str'
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+Disjonction sur le type de `l`
+
+```python
+def sum(l):
+    assert type(l) == list
+    assert len(l) > 0
+    if type(l[0]) == str:
+        zero = ""
+    elif type(l[0]) == int:
+        zero = 0
+    for element in l:
+        zero += element
+    return zero
+```
+
+```python
+>>> sum([1, 2, 3])
+6
+>>> sum(["a", "b", "c"])
+'abc'
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+Refactoring avec un dictionnaire de zéros
+
+```python
+zeros = {str:"", int:0, float:0, list:[]}
+
+def sum(l):
+    assert type(l) == list
+    assert len(l) > 0
+    result = zeros[type(l[0])]
+    for element in l:
+        result += element
+    return result
+```
+
+```python
+>>> sum([1.2, 2, 3])
+6.2
+>>> sum(["a", "b", "c"])
+'abc'
+>>> sum([[1, 2], [3, "a"], [4]])
+[1, 2, 3, 'a', 4]
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+### Polymorphisme avec des classes
+
+Deux classes implémentant une même méthode peuvent être traitées de façon polymorphe
+
+```python
+class List3:
+    "List with 3 elements"
+    def __init__(self, a, b, c):
+        self.value = [a, b, c]
+    
+    def count(self, value):
+        result = 0
+        for element in self.value:
+            if value == element:
+                result += 1
+        return result
+```
+
+Par exemple `List3` implémente la méthode `count`,<br/>comme `list`
+
+----
+
+La méthode `count_list` ci-dessous fait la somme des `counts`<br/>de tous les éléments d'une liste
+
+```python
+def count_list(l, value):
+    result = 0
+    for element in l:
+        result += element.count(value)
+    return result
+```
+
+```python
+>>> l1 = [1, 2, 1]
+>>> l2 = List3(2, 1, 3)
+>>> l3 = (1, 3)
+>>> count_list([l1, l2, l3], 1)
+4
+```
+
+---
+
+
+```python
+```
+
 
 
 ---
