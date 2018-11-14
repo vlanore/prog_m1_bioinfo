@@ -6,12 +6,18 @@
     font-size: 0.85em !important;
 }
 
+.reveal code {
+	font-size: 0.9em;
+	background-color: #eeeeee;
+}
+
 .reveal pre code {
 	padding: 5px;
 	overflow: auto;
 	max-height: 650px;
 	word-wrap: normal;
 	font-size: 0.9em;
+	background-color: white;
 }
 
 #left {
