@@ -79,3 +79,26 @@ l2 = List3(2, 3, 4)
 a = count_list([l1, l2, (2, 3)], 2)
 print(a)
 
+
+from abc import ABC, abstractmethod, abstractproperty
+
+class SequenceInterface(ABC):
+    @abstractmethod
+    def size(self):
+        pass
+
+def pretty_print_sequence(s):
+    message = "Sequence {} with {} elements: {}.".format(
+        s.name, s.size(), s.sequence)
+    print(message)
+
+class DNA(SequenceInterface):
+    def __init__(self, name, seq):
+        # self.name = name
+        self.sequence = seq
+
+    def size(self):
+        return len(self.sequence)
+
+s = DNA("seq1", "ATTGGCT")
+pretty_print_sequence(s)

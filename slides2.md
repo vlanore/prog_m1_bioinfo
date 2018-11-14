@@ -253,6 +253,7 @@ def add(a, b):
 
 ```python
 def sum(l):
+    assert type(l) == list
     result = 0
     for element in l:
         result += element
@@ -365,10 +366,53 @@ def count_list(l, value):
 
 ---
 
+### Problème: garantir/tester les objets
 
 ```python
+def pretty_print_sequence(s):
+    message = "Sequence {} with {} elements: {}.".format(
+        s.name, s.size(), s.sequence)
+    print(message)
 ```
 
+Comment tester (par ex. avec un `assert`) qu'un objet a bien:
+* un attribut `name`
+* une méthode `size`
+* un attribut `sequence`?
+
+Comment garantir qu'un nouvel objet fait bien tout ça ?
+
+---
+
+### Interfaces
+
+Une interface est un ensemble de fonctionnalités
+
+Par example, on peut décider d'appeler `SequenceInterface` l'interface constituée de
+* un attribut `name`
+* une méthode `size`
+* un attribut `sequence`
+
+----
+
+#### Implémentation en python
+
+```python
+from abc import ABC, abstractmethod
+
+class SequenceInterface(ABC):
+    @abstractmethod
+    def size(self):
+        pass
+
+    @abstractproperty
+    def name(self):
+        pass
+
+    @abstractproperty
+    def sequence(self):
+        pass
+```
 
 
 ---
