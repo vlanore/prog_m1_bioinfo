@@ -1,6 +1,6 @@
 import read_fasta_correction
 
-print(read_fasta_correction.read_fasta("data/example.fasta"))
+# print(read_fasta_correction.read_fasta("data/example.fasta"))
 
 
 class MyFloat:
@@ -145,4 +145,4 @@ l2 = [NumberPair(2, 2), NumberPair(5, 2), NumberPair(3, 2)]
 l3 = [4.2, 4.3, 4.5]
 print(sum_addable(l).value)
 print(sum_addable(l2).value)
-# print(sum_addable(l3))
+print(sum_addable(l3))

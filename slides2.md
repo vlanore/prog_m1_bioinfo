@@ -387,6 +387,23 @@ def count_list(l, value):
 
 ---
 
+### Résumé partie polymorphisme
+
+* une opération qui peut traiter des objets<br/>de différents types est __polymorphe__
+* python fournit de nombreuses opérations polymorphes
+* on peut être polymorphe en faisant des<br/>disjonctions sur les types
+* on peut être polymorphe avec des objets qui<br/>implémentent les même méthodes
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Interfaces</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
 ### Problème: garantir/tester les objets
 
 ```python
@@ -400,9 +417,15 @@ def sum(l):
     return result
 ```
 
-Comment tester (par ex. avec un `assert`) qu'un objet a bien:
+Ici, les éléments de `l` ont besoin de:
 * une méthode statique `zero`
 * une méthode `add`
+
+----
+
+#### Double problématique
+* vérifier (par ex. avec un `assert`) qu'un objet qu'on utilise implémente un ensemble de méthodes
+* quand on écrit une classe, s'assurer qu'on n'a pas oublié de méthode importante
 
 ---
 
@@ -410,10 +433,18 @@ Comment tester (par ex. avec un `assert`) qu'un objet a bien:
 
 Une interface est un ensemble de fonctionnalités
 
-Par example, on peut décider d'appeler `Addable` l'interface constituée de
+Par example, on peut décider d'appeler `Addable`<br/>l'interface constituée de :
 * une méthode statique `zero`
 * une méthode `add`
 * une méthode `greather_or_equal`
+
+---
+
+### Implémentation sous forme de classes abstraites
+
+> __Classe abstraite:__ classe qui ne peut pas être instantiée car ses méthodes ne sont pas définies
+
+Une classe abstraite sert pour obliger des classes filles à implémenter un ensemble de méthodes
 
 ----
 
@@ -437,6 +468,123 @@ class Addable(ABC):
         pass
 ```
 
+----
+
+#### Une classe Addable
+
+```python
+class UnaryInt(Addable):
+    def __init__(self, value):
+        self.value = []
+        for _ in range(value):
+            self.value.append(None)
+
+    def add(self, other):
+        self.value += other.value
+
+    def greater_or_equal(self, other):
+        return len(self.value) >= len(other.value)
+```
+
+```python
+>>> x = UnaryInt(3)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/vlanore/git/prog_m1_bioinfo/code/test.py", line 143, in <module>
+    x = UnaryInt(3)
+TypeError: Can't instantiate abstract class UnaryInt with abstract methods zero
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+#### Corrected class
+
+```python
+class UnaryInt(Addable):
+    def __init__(self, value):
+        self.value = []
+        for _ in range(value):
+            self.value.append(None)
+
+    def add(self, other):
+        self.value += other.value
+
+    @staticmethod
+    def zero():
+        return UnaryInt(0)
+
+    def greater_or_equal(self, other):
+        return len(self.value) >= len(other.value)
+```
+
+```python
+>>> x = UnaryInt(3)
+>>> x.value
+[None, None, None]
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+### Test de la fonction `sum`
+
+```python
+def sum(l): # même fonction que tout à l'heure
+    assert type(l) == list
+    assert len(l) > 0
+    element_class = type(l[0])
+    result = element_class.zero()
+    for element in l:
+        result.add(element)
+    return result
+```
+
+```python
+>>> l = [UnaryInt(2), UnaryInt(4), UnaryInt(3)]
+>>> result = sum(l)
+>>> result.value
+[None, None, None, None, None, None, None, None, None]
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+
+----
+
+#### Garantir l'interface
+
+```python
+def sum(l):
+    assert type(l) == list
+    assert len(l) > 0
+    element_class = type(l[0])
+    assert issubclass(element_class, Addable) # added
+    result = element_class.zero()
+    for element in l:
+        result.add(element)
+    return result
+```
+
+```python
+>>> l = [1, 2, 3]
+>>> result = sum(l)
+Traceback (most recent call last):
+  File "code/test.py", line 148, in <module>
+    print(sum_addable(l3))
+  File "code/test.py", line 137, in sum_addable
+    assert issubclass(element_class, Addable)
+AssertionError
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+### Résumé partie interfaces
+
+* une __interface__ est un ensemble de fonctionnalités que peut implémenter un objet
+* on peut implémenter les interfaces par des __classes abstraites__
+    * une classe abstraite garantit qu'on a bien implémenté les méthodes nécessaires
+    * on peut vérifier qu'un objet implémente une interface
 
 ---
 
