@@ -82,23 +82,67 @@ print(a)
 
 from abc import ABC, abstractmethod, abstractproperty
 
-class SequenceInterface(ABC):
+class Addable(ABC):
     @abstractmethod
-    def size(self):
+    def add(self, other):
+        pass
+    
+    @staticmethod
+    @abstractmethod
+    def zero():
         pass
 
-def pretty_print_sequence(s):
-    message = "Sequence {} with {} elements: {}.".format(
-        s.name, s.size(), s.sequence)
-    print(message)
+    @abstractmethod
+    def greater_or_equal(self, other):
+        pass
 
-class DNA(SequenceInterface):
-    def __init__(self, name, seq):
-        # self.name = name
-        self.sequence = seq
+class NumberPair(Addable):
+    def __init__(self, a, b):
+        self.value = (a, b)
+    
+    def add(self, other):
+        self.value = (self.value[0] + other.value[0],
+            self.value[1] + other.value[1])
 
-    def size(self):
-        return len(self.sequence)
+    @staticmethod
+    def zero():
+        return NumberPair(0, 0)
 
-s = DNA("seq1", "ATTGGCT")
-pretty_print_sequence(s)
+    def greater_or_equal(self, other):
+        if self.value[0] != other.value[0]:
+            return self.value[0] >= other.value[0]
+        else:
+            return self.value[1] >= other.value[1]
+
+class UnaryInt(Addable):
+    def __init__(self, value):
+        self.value = []
+        for _ in range(value):
+            self.value.append(None)
+
+    def add(self, other):
+        self.value += other.value
+
+    @staticmethod
+    def zero():
+        return UnaryInt(0)
+
+    def greater_or_equal(self, other):
+        return len(self.value) >= len(other.value)
+
+def sum_addable(l):
+    assert type(l) == list
+    assert len(l) > 0
+    element_class = type(l[0])
+    assert issubclass(element_class, Addable)
+    result = element_class.zero()
+    for element in l:
+        result.add(element)
+    return result
+
+l = [UnaryInt(2), UnaryInt(5), UnaryInt(3)]
+l2 = [NumberPair(2, 2), NumberPair(5, 2), NumberPair(3, 2)]
+l3 = [4.2, 4.3, 4.5]
+print(sum_addable(l).value)
+print(sum_addable(l2).value)
+# print(sum_addable(l3))

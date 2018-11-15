@@ -166,6 +166,27 @@ True
 
 ---
 
+### Méthodes statiques
+
+> __Méthode statique:__ fonction associée à<br/>une classe (plutôt qu'à une instance)
+
+```python
+class MyClass:
+    @staticmethod
+    def class_name():
+        return "MyClass"
+```
+
+```python
+>>> x = MyClass()
+>>> x.class_name()
+'MyClass'
+>>> MyClass.class_name()
+'MyClass'
+```
+
+---
+
 ### Résumé des rappels
 
 * les __objets__ regroupent:
@@ -369,18 +390,19 @@ def count_list(l, value):
 ### Problème: garantir/tester les objets
 
 ```python
-def pretty_print_sequence(s):
-    message = "Sequence {} with {} elements: {}.".format(
-        s.name, s.size(), s.sequence)
-    print(message)
+def sum(l):
+    assert type(l) == list
+    assert len(l) > 0
+    element_class = type(l[0])
+    result = element_class.zero()
+    for element in l:
+        result.add(element)
+    return result
 ```
 
 Comment tester (par ex. avec un `assert`) qu'un objet a bien:
-* un attribut `name`
-* une méthode `size`
-* un attribut `sequence`?
-
-Comment garantir qu'un nouvel objet fait bien tout ça ?
+* une méthode statique `zero`
+* une méthode `add`
 
 ---
 
@@ -388,29 +410,30 @@ Comment garantir qu'un nouvel objet fait bien tout ça ?
 
 Une interface est un ensemble de fonctionnalités
 
-Par example, on peut décider d'appeler `SequenceInterface` l'interface constituée de
-* un attribut `name`
-* une méthode `size`
-* un attribut `sequence`
+Par example, on peut décider d'appeler `Addable` l'interface constituée de
+* une méthode statique `zero`
+* une méthode `add`
+* une méthode `greather_or_equal`
 
 ----
 
 #### Implémentation en python
 
 ```python
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractproperty
 
-class SequenceInterface(ABC):
+class Addable(ABC):
     @abstractmethod
-    def size(self):
+    def add(self, other):
+        pass
+    
+    @staticmethod
+    @abstractmethod
+    def zero():
         pass
 
-    @abstractproperty
-    def name(self):
-        pass
-
-    @abstractproperty
-    def sequence(self):
+    @abstractmethod
+    def greater_or_equal(self, other):
         pass
 ```
 
