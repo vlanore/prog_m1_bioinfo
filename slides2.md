@@ -6,7 +6,7 @@ title: Cours M1 bioinfo
 <link href='custom.css' rel='stylesheet' type='text/css'>
 
 <!--=================================================================================================== -->
-## <h2 style="color:white;">Conception logicielle orientée objet</h2>
+## <h2 style="color:white;">Conception de logiciel orientée objet</h2>
 <!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
 <!-- .slide: data-background="img/code.png" -->
@@ -16,6 +16,64 @@ UE programmation orientée objet
 Master bioinfo
 
 Automne 2018
+
+---
+
+### Conception orientée objet
+
+Quand on écrit un logiciel complexe,<br/>la façon dont on l'organise est importante
+
+La __conception logicielle orientée objet__ (_object-oriented<br/>software design_) est le processus
+d'organisation et de planification d'un programme orienté objet.
+
+---
+
+### Objectifs
+
+* que le programme soit __flexible__ à l'utilisation
+* que le code soit __facile à faire évoluer__
+* que la structure du programme soit __facile à comprendre__
+
+---
+
+### Bonnes propriétés
+
+* __généricité__: le code fonctionne dans plusieurs contextes
+* __faible couplage__: les différentes parties du code sont indépendantes les unes des autres
+* __abstraction__: on peut raisonner/travailler sur le code sans connaître les détails
+* ...
+
+---
+
+### Généricité
+
+> Le code fonctionne dans plusieurs contextes
+
+* évite de dupliquer du code
+* permet des usages variés
+* moins de chance de devoir souvent modifier le code
+* ...
+
+---
+
+### Faible couplage
+
+> Les différentes parties du code sont indépendantes les unes des autres
+
+* on peut travailler sur un morceau sans comprendre le reste
+* moins de travail quand on change quelque chose
+* relation entre objets plus faciles à comprendre
+* ...
+
+---
+
+### Abstraction
+
+> On peut raisonner/travailler sur le code<br/>sans connaître les détails
+
+* le code est plus facile à comprendre
+* il est plus facile d'écrire du code juste
+* ...
 
 ---
 
