@@ -145,4 +145,38 @@ l2 = [NumberPair(2, 2), NumberPair(5, 2), NumberPair(3, 2)]
 l3 = [4.2, 4.3, 4.5]
 print(sum_addable(l).value)
 print(sum_addable(l2).value)
-print(sum_addable(l3))
+# print(sum_addable(l3))
+
+
+class Vehicle(ABC):
+    @abstractmethod
+    def terrain(self):
+        pass
+
+    @abstractmethod
+    def speed(self):
+        pass
+
+class Car(Vehicle):
+    def terrain(self):
+        return "ground"
+
+    @abstractmethod
+    def nb_doors(self):
+        pass
+
+class Boat(Vehicle):
+    def terrain(self):
+        return "water"
+
+class Beetle(Car):
+    def __init__(self, color):
+        self.color = color
+
+    def nb_doors(self):
+        return 3
+        
+    def speed(self):
+        return 100
+
+my_car = Beetle("blue")

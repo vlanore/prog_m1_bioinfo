@@ -20,6 +20,11 @@
 	background-color: white;
 }
 
+.reveal section img { 
+	border: 0px;
+	box-shadow: 0 0 0px #000000
+}
+
 #left {
 	left:-8.33%;
 	text-align: left;

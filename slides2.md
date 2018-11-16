@@ -588,6 +588,86 @@ AssertionError
 
 ---
 
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Héritage et composition</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### L'héritage comme spécialisation
+
+
+```python
+class Vehicle(ABC):
+    @abstractmethod
+    def terrain(self):
+        pass
+    
+    @abstractmethod
+    def speed(self):
+        pass
+
+class Car(Vehicle):
+    def terrain(self):
+        return "ground"
+
+    @abstractmethod
+    def nb_doors(self):
+        pass
+
+class Boat(Vehicle):
+    def terrain(self):
+        return "water"
+```
+
+----
+
+#### Diagramme de classes
+
+![](img/inheritance.svg)
+
+----
+
+#### Classes concrètes
+
+```python
+class Beetle(Car):
+    def __init__(self, color):
+        self.color = color
+
+    def nb_doors(self):
+        return 3
+        
+    def speed(self):
+        return 100
+```
+
+```python
+>>> my_car = Beetle("blue")
+>>> my_car.terrain()
+'ground'
+>>> my_car.speed()
+100
+>>> issubclass(type(my_car), Car)
+True
+>>> issubclass(type(my_car), Boat)
+False
+>>> issubclass(type(my_car), Vehicle)
+True
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+#### Diagramme de classes
+
+![](img/inheritance2.svg)
+
+
+---
+
 * rappels orienté object
     * interfaces
     * polymorphisme
