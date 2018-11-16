@@ -647,15 +647,14 @@ AssertionError
 ---
 
 <!--=================================================================================================== -->
-## <h2 style="color:white;">Héritage et composition</h2>
+## <h2 style="color:white;">L'héritage c'est bien</h2>
 <!--=================================================================================================== -->
 <!-- .slide: style="color:white" -->
 <!-- .slide: data-background="img/code.png" -->
 
 ---
 
-### L'héritage comme spécialisation
-
+### Structure typique d'héritage
 
 ```python
 class Vehicle(ABC):
@@ -723,6 +722,92 @@ True
 
 ![](img/inheritance2.svg)
 
+---
+
+### Avantages
+
+* L'arbre d'héritage fournit une __taxonomie__ des objets<br/>(abstraction)
+
+```python
+>>> my_car = Beetle("blue")
+>>> issubclass(type(my_car), Car)
+True
+>>> issubclass(type(my_car), Boat)
+False
+>>> issubclass(type(my_car), Vehicle)
+True
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+* Réutilisation du code des classes parentes<br/>(code facile à étendre)
+
+```python
+class Beetle(Car):
+    def __init__(self, color):
+        self.color = color
+
+    def nb_doors(self):
+        return 3
+        
+    def speed(self):
+        return 100
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```python
+>>> my_car = Beetle("blue")
+>>> my_car.terrain()
+'ground'
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+(Changer juste un détail d'une classe est facile)
+
+```python
+class BrokenBeetle(Beetle):
+    def speed(self):
+        return 0
+```
+
+```python
+>>> my_car = Beetle("blue")
+>>> my_old_car = BrokenBeetle("green")
+>>> my_old_car.speed()
+0
+>>> my_car.speed()
+100
+>>> my_old_car.color
+'green'
+>>> my_old_car.color
+'green'
+>>> my_old_car.nb_doors()
+3
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
+* Polymorphisme sur les descendants d'une classe<br/>(généricité)
+
+```python
+def car_info(car):
+    assert issubclass(type(car), Car)
+    return "This car has {} doors and its top speed is {}km/h"\
+        .format(car.nb_doors(), car.speed())
+```
+
+```python
+>>> my_old_car = Beetle("blue")
+>>> my_car = Espace()
+>>> car_info(my_old_car)
+'This car has 5 doors and its top speed is 180km/h'
+>>> car_info(my_car)
+'This car has 3 doors and its top speed is 100km/h'
+```
 
 ---
 

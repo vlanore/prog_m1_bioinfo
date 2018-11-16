@@ -179,4 +179,17 @@ class Beetle(Car):
     def speed(self):
         return 100
 
+class BrokenBeetle(Beetle):
+    def speed(self):
+        return 0
+
+def car_info(car):
+    assert issubclass(type(car), Car)
+    return "This car has {} doors and its top speed is {}km/h"\
+        .format(car.nb_doors(), car.speed())
+
 my_car = Beetle("blue")
+my_car2 = BrokenBeetle("blue")
+print(car_info(my_car))
+print(car_info(my_car2))
+print(my_car2.color)
