@@ -1031,6 +1031,41 @@ Par exemple, plutôt que d'avoir
 
 ### _Adaptor pattern_
 
-__Problème :__ j'ai envie de me servir d'un objet qui n'a pas exactement la bonne interface
+__Problème :__ j'ai envie de me servir d'un objet qui<br/>n'a pas exactement la bonne interface
 
-__Solution :__ créer un objet "adaptateur" qui va faire la conversion d'interface
+__Solution :__ créer un objet "adaptateur" qui va<br/>faire la conversion d'interface
+
+----
+
+```python
+class Printable(ABC):
+    @abstractmethod
+    def print(self): # prints to console
+        pass
+```
+
+```python
+def print_list(l):
+    assert type(l) == list
+    for element in l:
+        assert issubclass(type(element), Printable)
+        element.print()
+```
+
+----
+
+```python
+class Stringable(ABC):
+    @abstractmethod
+    def to_string(self): # returns a string
+        pass
+```
+
+```python
+class MyObjet(Stringable):
+    def __init__(self, value):
+        self.value = value
+
+    def to_string(self):
+        return "MyObject({})".format(value)
+```
