@@ -928,7 +928,7 @@ class Helipad():
     def land_on(self, helicopter):
         print("Helicopter {} lands on me!".format(helicopter))
 
-class BoatWithHelipad(Helipad):
+class BoatWithHelipad(Boat, Helipad):
     def float_on_sea(self):
         print("I float on the sea!")
 ```
@@ -942,16 +942,32 @@ class Helipad():
     def land_on(self, helicopter):
         print("Helicopter {} lands on me!".format(helicopter))
 
-class BoatWithHelipad():
+class BoatWithHelipad(Boat):
     def __init__(self):
         self.helipad = Helipad()
 
-    def land_on(self, helicopter):
+    def land_on_helipad(self, helicopter):
         self.helipad.land_on(helicopter)
 
     def float_on_sea(self):
         print("I float on the sea!")
 ```
+
+----
+
+#### Avantages
+
+* mon bateau n'__est__ pas un hélipad, il __possède__ un hélipad
+* peut utiliser `self.helipad` si besoin d'un helipad
+* pas de risque de conflit de méthode/d'attribut
+
+---
+
+### Pour le polymorphisme et le typage : les interfaces
+
+Plutôt qu'avoir une hiérarchie de __classes avec des implémentations__ qui représentent ce que les objets __sont__...
+
+...avoir des objets qui héritent directement d'__interfaces__, qui représentent ce que les objets __font__
 
 ---
 
