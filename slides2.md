@@ -899,9 +899,59 @@ Risque de conflit sur les définitions
 
 ----
 
-Quand un code commence à avoir ce genre de problèmes (_code smells_):
+Quand un code commence à avoir<br/>ce genre de problèmes (_code smells_):
 
 <img src="img/gandalf.jpg" alt="drawing" style="width:500px;"/>
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Comment se passer de l'héritage</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Pour réutiliser: la composition
+
+Plutôt que d'hériter de `C`, détenir une instance de `C` en attribut
+
+Potentiellement rediriger certaines méthodes vers l'attribut
+
+----
+
+Au lieu de faire de l'héritage...
+
+```python
+class Helipad():
+    def land_on(self, helicopter):
+        print("Helicopter {} lands on me!".format(helicopter))
+
+class BoatWithHelipad(Helipad):
+    def float_on_sea(self):
+        print("I float on the sea!")
+```
+
+----
+
+...avoir un attribut dont on récupère la fonctionnalité
+
+```python
+class Helipad():
+    def land_on(self, helicopter):
+        print("Helicopter {} lands on me!".format(helicopter))
+
+class BoatWithHelipad():
+    def __init__(self):
+        self.helipad = Helipad()
+
+    def land_on(self, helicopter):
+        self.helipad.land_on(helicopter)
+
+    def float_on_sea(self):
+        print("I float on the sea!")
+```
 
 ---
 
