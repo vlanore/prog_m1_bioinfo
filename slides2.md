@@ -1185,6 +1185,8 @@ class Person(PeopleSet):
 
 ----
 
+Les conteneurs contiennent forcément des `PeopleSet` et sont des `PeopleSet`
+
 ```python
 class PeopleContainer(PeopleSet):
     def __init__(self, subsets, set_type):
@@ -1206,6 +1208,8 @@ class PeopleContainer(PeopleSet):
 ```
 
 ----
+
+On peut combiner les conteneurs comme on le souhaite et avoir gratuitement `count` et `to_string`
 
 ```python
 >>> john, jenny, betty = Person("john"), Person("jenny"), Person("betty")
