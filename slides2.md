@@ -1037,6 +1037,8 @@ __Solution :__ créer un objet "adaptateur" qui va<br/>faire la conversion d'int
 
 ----
 
+Exemple : fonction polymorphe qui attend des objets `Printable`
+
 ```python
 class Printable(ABC):
     @abstractmethod
@@ -1054,6 +1056,8 @@ def print_list(l):
 
 ----
 
+La classe `MyObject` n'a pas la bonne interface<br/>mais fournit une fonctionnalité proche
+
 ```python
 class Stringable(ABC):
     @abstractmethod
@@ -1067,5 +1071,27 @@ class MyObjet(Stringable):
         self.value = value
 
     def to_string(self):
-        return "MyObject({})".format(value)
+        return "MyObject<{}>".format(value)
+```
+
+----
+
+Solution : écrire un adaptateur
+
+```python
+class StringableToPrintable(Printable):
+    def __init__(self, target):
+        self.target = target
+
+    def print(self):
+        print(self.target.to_string())
+```
+
+```python
+>>> o1 = StringableToPrintable(MyObject(3))
+>>> o2 = StringableToPrintable(MyObject(5))
+>>> l = [o1, o2]
+>>> print_list(l)
+MyObject<3>
+MyObject<5>
 ```
