@@ -880,6 +880,8 @@ Risque de conflit sur les définitions
 
 * plusieurs hiérarchies peuvent entrer en conflit
 
+![](img/multi_hier.svg)
+
 ---
 
 ---
