@@ -1164,7 +1164,7 @@ __Solution :__ unifier toutes les interfaces
 
 ----
 
-Les personnes et ensembles de personne deviennent toutes des `PeopleSet`
+Les personnes et ensembles de personne<br/>deviennent toutes des `PeopleSet`
 
 ```python
 class PeopleSet(Stringable, Countable):
@@ -1177,7 +1177,7 @@ class Person(PeopleSet):
         self.name = name
     
     def to_string(self):
-        return "Person named {}".format(self.name)
+        return self.name
 
     def count(self):
         return 1
@@ -1199,8 +1199,21 @@ class PeopleContainer(PeopleSet):
         return result
 
     def to_string(self):
-        result = self.set_type + "{\n"
+        result = self.set_type + "{ "
         for subset in self.subsets:
-            result += "\t* " + subset.to_string() + "\n"
+            result += subset.to_string() + " "
         return result + "}"
+```
+
+----
+
+```python
+>>> john, jenny, betty = Person("john"), Person("jenny"), Person("betty")
+>>> appartment1 = PeopleContainer([john], "appartment")
+>>> appartment2 = PeopleContainer([jenny, betty], "appartment")
+>>> building = PeopleContainer([appartment1, appartment2], "building")
+>>> building.count()
+3
+>>> building.to_string()
+'building{ appartment{ john }, appartment{ jenny betty } }'
 ```
