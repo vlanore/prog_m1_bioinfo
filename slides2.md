@@ -1126,8 +1126,6 @@ class Person(Stringable):
 
 ----
 
-Les personnes peuvent être dans différents objets
-
 ```python
 class Countable(ABC):
     @abstractmethod
@@ -1153,7 +1151,52 @@ class Building(Countable):
 
     def count(self):
         result = 0
-        for appartement in self.appart:
-            result += self.count()
+        for appartment in self.appart:
+            result += appartment.count()
         return result
+```
+
+----
+
+__Problème :__ la structure risque vite de devenir complexe et il faut prendre tous les types d'objet en compte
+
+__Solution :__ unifier toutes les interfaces
+
+----
+
+```python
+class PeopleSet(Stringable, Countable):
+    pass
+```
+
+```python
+class Person(PeopleSet):
+    def __init__(self, name):
+        self.name = name
+    
+    def to_string(self):
+        return "Person named {}".format(self.name)
+
+    def count(self):
+        return 1
+```
+
+```python
+class PeopleContainer(PeopleSet):
+    def __init__(self, subsets, set_type):
+        assert type(subsets) == list
+        self.subsets = subsets
+        self.set_type = set_type
+
+    def count(self):
+        result = 0
+        for subset in self.subsets:
+            result += subset.count()
+        return result
+
+    def to_string(self):
+        result = self.set_type + "{\n"
+        for subset in self.subsets:
+            result += "\t* " + subset.to_string() + "\n"
+        return result + "}"
 ```
