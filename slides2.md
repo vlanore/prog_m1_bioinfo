@@ -811,6 +811,14 @@ def car_info(car):
 
 ---
 
+### Résumé des avantages de l'héritage
+
+* permet de __spécialiser__ des objets étape par étape
+* fournit une __taxonomie__
+* __réutilisation__ de code des classes parentes
+* __polymorphisme__ sur les descendants d'une classe
+
+
 <!--=================================================================================================== -->
 ## <h2 style="color:white;">L'héritage c'est dangereux</h2>
 <!--=================================================================================================== -->
@@ -819,11 +827,35 @@ def car_info(car):
 
 ---
 
+### Mauvais usage de l'héritage
+
+Il peut être tentant d'hériter d'une classe `C` pour réutiliser son code même si on n'est pas un cas particulier de `C`
+
+----
+
+#### Exemple: besoin d'un bateau avec un hélipad
+
+<img src="img/heliboat.jpg" alt="drawing" style="width:350px;"/>
+
+----
+
+
+
+---
+
 ### Problèmes liés à la hiérarchie
 
-* il n'est pas toujours évidentde savoir où mettre une méthode ou un attribut
+* il n'est pas toujours évident de savoir où mettre une méthode ou un attribut
+
+----
 
 ![](img/inheritance2.svg)
+
+----
+
+* plusieurs hiérarchies peuvent entrer en conflit
+
+---
 
 ---
 
