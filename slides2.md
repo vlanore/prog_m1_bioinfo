@@ -963,11 +963,23 @@ class BoatWithHelipad(Boat):
 
 ---
 
-### Pour le polymorphisme et le typage : les interfaces
+### Pour le polymorphisme/typage : les interfaces
 
 Plutôt qu'avoir une hiérarchie de __classes avec des implémentations__ qui représentent ce que les objets __sont__...
 
 ...avoir des objets qui héritent directement d'__interfaces__, qui représentent ce que les objets __font__
+
+----
+
+Par exemple, plutôt que d'avoir
+
+![](img/helib2.svg)
+
+----
+
+...préférer la structurer suivante :
+
+![](img/helib3.svg)
 
 ---
 
