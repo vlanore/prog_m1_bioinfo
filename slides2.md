@@ -1164,6 +1164,8 @@ __Solution :__ unifier toutes les interfaces
 
 ----
 
+Les personnes et ensembles de personne deviennent toutes des `PeopleSet`
+
 ```python
 class PeopleSet(Stringable, Countable):
     pass
@@ -1180,6 +1182,8 @@ class Person(PeopleSet):
     def count(self):
         return 1
 ```
+
+----
 
 ```python
 class PeopleContainer(PeopleSet):
