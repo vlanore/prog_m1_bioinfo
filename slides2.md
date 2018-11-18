@@ -854,6 +854,20 @@ __Problème__: un bateau avec un hélipad n'est pas un hélipad
 
 ---
 
+### L'héritage multiple est dangereux
+
+Risque de conflit sur les définitions
+
+![](img/multiple.svg)
+
+----
+
+#### Héritage en diamant
+
+![](img/diamond.svg)
+
+---
+
 ### Problèmes liés à la hiérarchie
 
 * il n'est pas toujours évident de savoir où mettre une méthode ou un attribut
