@@ -818,6 +818,7 @@ def car_info(car):
 * __réutilisation__ de code des classes parentes
 * __polymorphisme__ sur les descendants d'une classe
 
+---
 
 <!--=================================================================================================== -->
 ## <h2 style="color:white;">L'héritage c'est dangereux</h2>
@@ -839,9 +840,17 @@ Il peut être tentant d'hériter d'une classe `C` pour réutiliser son code mêm
 
 ----
 
-Ben je n'ai qu'à créer une classe de Bateau qui hérite de la classe Helipad
+Ben je n'ai qu'à créer une classe de Bateau<br/>qui hérite de la classe Helipad
 
 ![](img/heliboat.svg)
+
+----
+
+__Problème__: un bateau avec un hélipad n'est pas un hélipad
+
+* utiliser `BoatWithHelipad` dans un contexte qui attend un `Helipad` peut faire n'importe quoi
+* le typage / la taxonomie n'a plus aucun sens
+* encourage l'héritage multiple
 
 ---
 
