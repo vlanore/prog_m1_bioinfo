@@ -1071,7 +1071,7 @@ class MyObjet(Stringable):
         self.value = value
 
     def to_string(self):
-        return "MyObject<{}>".format(value)
+        return "MyObject<{}>".format(self.value)
 ```
 
 ----
@@ -1094,4 +1094,39 @@ class StringableToPrintable(Printable):
 >>> print_list(l)
 MyObject<3>
 MyObject<5>
+```
+
+---
+
+### Composite pattern
+
+__Problème :__ besoin de traiter des objets et des collections d'objets de façon homogène
+
+__Solution :__ faire en sorte qu'une collection se comporte comme un objet individuel
+
+----
+
+Exemple : je veux pouvoir compter les personnes dans une structure complexe et afficher leur liste
+
+```python
+class Stringable(ABC):
+    @abstractmethod
+    def to_string(self): # returns a string
+        pass
+```
+
+```python
+class Countable(ABC):
+    @abstractmethod
+    def count(self): # returns an int
+        pass
+```
+
+```python
+class Person(Stringable):
+    def __init__(self, name):
+        self.name = name
+    
+    def to_string(self):
+        return "Person named {}".format(self.name)
 ```
