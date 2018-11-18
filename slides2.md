@@ -811,6 +811,22 @@ def car_info(car):
 
 ---
 
+<!--=================================================================================================== -->
+## <h2 style="color:white;">L'héritage c'est dangereux</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Problèmes liés à la hiérarchie
+
+* il n'est pas toujours évidentde savoir où mettre une méthode ou un attribut
+
+![](img/inheritance2.svg)
+
+---
+
 * rappels orienté object
     * interfaces
     * polymorphisme
