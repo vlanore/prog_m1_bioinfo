@@ -975,11 +975,15 @@ Par exemple, plutôt que d'avoir
 
 ![](img/helib2.svg)
 
+(où les méthodes des classes mères peuvent avoir une implémentation)
+
 ----
 
 ...préférer la structurer suivante :
 
 ![](img/helib3.svg)
+
+(où toutes les classes abstraites sont des interfaces et donc __sans implémentation__)
 
 ---
 
