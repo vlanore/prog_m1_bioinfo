@@ -1116,6 +1116,19 @@ class Stringable(ABC):
 ```
 
 ```python
+class Person(Stringable):
+    def __init__(self, name):
+        self.name = name
+    
+    def to_string(self):
+        return "Person named {}".format(self.name)
+```
+
+----
+
+Les personnes peuvent être dans différents objets
+
+```python
 class Countable(ABC):
     @abstractmethod
     def count(self): # returns an int
@@ -1123,10 +1136,24 @@ class Countable(ABC):
 ```
 
 ```python
-class Person(Stringable):
-    def __init__(self, name):
-        self.name = name
-    
-    def to_string(self):
-        return "Person named {}".format(self.name)
+class Appartment(Countable):
+    def __init__(self, people_list):
+        assert type(people_list) == list
+        self.people = people_list
+
+    def count(self):
+        return len(self.people)
+```
+
+```python
+class Building(Countable):
+    def __init__(self, appart_list):
+        assert type(appart_list) == list
+        self.appart = appart_list
+
+    def count(self):
+        result = 0
+        for appartement in self.appart:
+            result += self.count()
+        return result
 ```
