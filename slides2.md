@@ -852,6 +852,12 @@ __Problème__: un bateau avec un hélipad n'est pas un hélipad
 * le typage / la taxonomie n'a plus aucun sens
 * encourage l'héritage multiple
 
+----
+
+#### Principe de substitution de Liskov
+
+Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
+
 ---
 
 ### L'héritage multiple est dangereux
@@ -878,11 +884,24 @@ Risque de conflit sur les définitions
 
 ----
 
-* plusieurs hiérarchies peuvent entrer en conflit
+* un objet peut se retrouver à cheval entre plusieurs hiérarchies
 
 ![](img/multi_hier.svg)
 
 ---
+
+### Résumés des mises en garde
+
+* ne pas hériter quand `F` n'est pas une spécialisation de `M`
+    * principe de substitution de Liskov
+* éviter l'héritage multiple
+* éviter d'avoir plusieurs hiérarchies qui se mélangent
+
+----
+
+Quand un code commence à avoir ce genre de problèmes (_code smells_):
+
+<img src="img/gandalf.jpg" alt="drawing" style="width:500px;"/>
 
 ---
 
