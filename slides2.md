@@ -1007,7 +1007,25 @@ Par exemple, plutôt que d'avoir
 #### L'héritage est utile
 
 * pour faire des modifications simples au comportement d'une classe (`Beetle` -> `BrokenBeetle`)
-* quand un programme s'écrit bien avec une seule hiérarchie de classes
+* quand un programme s'écrit bien avec<br/>une seule hiérarchie de classes
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Les _design patterns_</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### _Design patterns_
+
+> __Design pattern :__ technique de conception objet permettant de résoudre un problème courant
+
+<img src="img/design.jpg" alt="drawing" style="width:500px;"/>
+
+
 
 ---
 
