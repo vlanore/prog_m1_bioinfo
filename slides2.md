@@ -835,11 +835,13 @@ Il peut être tentant d'hériter d'une classe `C` pour réutiliser son code mêm
 
 #### Exemple: besoin d'un bateau avec un hélipad
 
-<img src="img/heliboat.jpg" alt="drawing" style="width:350px;"/>
+<img src="img/heliboat.jpg" alt="drawing" style="width:500px;"/>
 
 ----
 
+Ben je n'ai qu'à créer une classe de Bateau qui hérite de la classe Helipad
 
+![](img/heliboat.svg)
 
 ---
 
