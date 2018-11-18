@@ -1185,7 +1185,7 @@ class Person(PeopleSet):
 
 ----
 
-Les conteneurs contiennent forcément des `PeopleSet` et sont des `PeopleSet`
+Les conteneurs contiennent forcément<br/>des `PeopleSet` et sont des `PeopleSet`
 
 ```python
 class PeopleContainer(PeopleSet):
@@ -1209,7 +1209,7 @@ class PeopleContainer(PeopleSet):
 
 ----
 
-On peut combiner les conteneurs comme on le souhaite et avoir gratuitement `count` et `to_string`
+On peut combiner les conteneurs comme on le souhaite<br/>et avoir gratuitement `count` et `to_string`
 
 ```python
 >>> john, jenny, betty = Person("john"), Person("jenny"), Person("betty")
