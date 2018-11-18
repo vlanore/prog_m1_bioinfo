@@ -975,15 +975,37 @@ Par exemple, plutôt que d'avoir
 
 ![](img/helib2.svg)
 
-(où les méthodes des classes mères peuvent avoir une implémentation)
-
 ----
 
 ...préférer la structurer suivante :
 
 ![](img/helib3.svg)
 
-(où toutes les classes abstraites sont des interfaces et donc __sans implémentation__)
+(où toutes les classes abstraites sont des<br/>interfaces et donc __sans implémentation__)
+
+----
+
+#### Avantages
+
+* pas de conflit sur les implémentations
+* probabilité de conflit sur les noms plus faible (pas de diamants)
+* pas de problèmes de hiérarchies multiples
+* plus modulaire (pas limité par la hiérarchie)
+
+---
+
+### Conclusions héritage
+
+> Dans le doute, préférer la __composition__ à l'héritage
+
+> Dans le doute, préférer les __interfaces__ aux hiérarchies de classes avec implémentation
+
+----
+
+#### L'héritage est utile
+
+* pour faire des modifications simples au comportement d'une classe (`Beetle` -> `BrokenBeetle`)
+* quand un programme s'écrit bien avec une seule hiérarchie de classes
 
 ---
 
