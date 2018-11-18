@@ -1023,22 +1023,14 @@ Par exemple, plutôt que d'avoir
 
 > __Design pattern :__ technique de conception objet permettant de résoudre un problème courant
 
+----
+
 <img src="img/design.jpg" alt="drawing" style="width:500px;"/>
-
-
 
 ---
 
-* rappels orienté object
-    * interfaces
-    * polymorphisme
-* enjeux:
-    * code flexible ?
-    * factorisation ?
-    * réutilisation ?
-* composition / héritage
-    * liskov principle
-* invariants, pré/ost conditions
-* MVC
-* sérialisation
-* code générique (type / collection hétérogènes)
+### _Adaptor pattern_
+
+__Problème :__ j'ai envie de me servir d'un objet qui n'a pas exactement la bonne interface
+
+__Solution :__ créer un objet "adaptateur" qui va faire la conversion d'interface
