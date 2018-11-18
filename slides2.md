@@ -998,6 +998,8 @@ Par exemple, plutôt que d'avoir
 
 > Dans le doute, préférer la __composition__ à l'héritage
 
+--
+
 > Dans le doute, préférer les __interfaces__ aux hiérarchies de classes avec implémentation
 
 ----
