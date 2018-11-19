@@ -19,6 +19,20 @@ Automne 2018
 
 ---
 
+Slides are available at http://vlanore.eu:1948/slides2.md
+
+Example code is available at<br/> https://github.com/vlanore/prog_m1_bioinfo
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Introduction</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
 ### Conception orientée objet
 
 Quand on écrit un logiciel complexe,<br/>la façon dont on l'organise est importante
@@ -782,8 +796,8 @@ class BrokenBeetle(Beetle):
 100
 >>> my_old_car.color
 'green'
->>> my_old_car.color
-'green'
+>>> my_car.color
+'blue'
 >>> my_old_car.nb_doors()
 3
 ```
@@ -1245,6 +1259,82 @@ __Solution :__ séparation du programme en trois parties :
 
 ![](img/mvc.svg)
 
+----
+
+__Modèle__: déclarations de personnes habitants dans des endroits
+
+```python
+class Declarations:
+    def __init__(self):
+        self.declarations = []
+
+    def new_person(self, name):
+        self.declarations.append(Person(name))
+
+    def new_container(self, container_type):
+        self.declarations.append(PeopleContainer([], container_type))
+
+    def add_person(self, name):
+        assert type(self.declarations[-1]) == PeopleContainer
+        self.declarations[-1].subsets.append(Person(name))
+```
+
+----
+
+__View__: afficheur de déclarations dans la console
+
+```python
+class DeclarationDisplay:
+    def __init__(self, declarations):
+        self.declarations = declarations
+
+    def display(self):
+        for i in range(len(self.declarations)):
+            print("Declaration {}: {}".format(
+                i, self.declarations[i].to_string()))
+```
+
+----
+
+<!-- __Controller__: interface console pour ajouter des personnes -->
+
+```python
+class DeclarationInterface:
+    def __init__(self):
+        self.model = Declarations()
+        self.display = DeclarationDisplay(self.model.declarations)
+
+    def run(self):
+        while True:
+            command = input("Enter command (q to quit): ")
+            if command == "q":
+                break
+            elif command == "new person":
+                self.get_name_and_declare(self.model.new_person)
+            elif command == "new container":
+                self.get_name_and_declare(self.model.new_container)
+            elif command == "add person":
+                self.get_name_and_declare(self.model.add_person)
+            else:
+                print("Existing commands are:\n*new person\n*add person\n*new container")
+            self.display.display()
+
+    def get_name_and_declare(self, method):
+        name = input("Enter name: ")
+        method(name)
+```
+
+----
+
+Il n'y a plus qu'à lancer
+
+```python
+interface = DeclarationInterface()
+interface.run()
+```
+
+__Démo__
+
 
 ---
 
@@ -1263,6 +1353,7 @@ __Solution :__ séparation du programme en trois parties :
 * héritage, pour et contre
 * composition
 * interface
+* _design patterns_
 
 ----
 
