@@ -1098,7 +1098,7 @@ MyObject<5>
 
 ---
 
-### Composite pattern
+### _Composite pattern_
 
 __Problème :__ besoin de traiter des objets et des collections d'objets de façon homogène
 
@@ -1221,3 +1221,59 @@ On peut combiner les conteneurs comme on le souhaite<br/>et avoir gratuitement `
 >>> building.to_string()
 'building{ appartment{ john }, appartment{ jenny betty } }'
 ```
+
+----
+
+#### Avantages
+
+* l'utilisateur n'a pas besoin de savoir ce qu'il manipule
+* conception simple et générique
+* on peut facilement rajouter des nouvelles classes
+
+---
+
+### _Model View Controller_ (MVC)
+
+__Problème :__ conception de systèmes interactifs<br/>potentiellement complexes
+
+__Solution :__ séparation du programme en trois parties :
+* un modèle, qui contient la logique du programme
+* un contrôleur, pour donner des instructions au programme
+* une "vue", pour voir ce que fait le programme
+
+----
+
+![](img/mvc.svg)
+
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Conclusion</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Aujourd'hui
+
+* rappels objets
+* polymorphisme
+* héritage, pour et contre
+* composition
+* interface
+
+----
+
+> Dans le doute, préférer la __composition__ à l'héritage
+
+--
+
+> Dans le doute, préférer les __interfaces__ aux hiérarchies de classes avec implémentation
+
+----
+
+Pour résoudre des problèmes complexes,<br/>ne réinventez pas la roue
+
+<img src="img/design.jpg" alt="drawing" style="width:400px;"/>
