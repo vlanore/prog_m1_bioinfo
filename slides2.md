@@ -1362,6 +1362,22 @@ Communément utilisé pour les applications graphiques ou web
 * _composite_: traiter les collections comme les objets individuels
 * _model-view-controller_: architecture pour les applications interactives
 
+
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Aller plus loin : composants</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+### Modèles à composants
+
+* composition systématique
+* assemblage extérieur
+
 ---
 
 <!--=================================================================================================== -->
