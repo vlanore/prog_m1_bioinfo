@@ -1264,7 +1264,7 @@ __Solution :__ séparation du programme en trois parties :
 __Modèle__: déclarations de personnes habitants dans des endroits
 
 ```python
-class Declarations:
+class Declarations: #model
     def __init__(self):
         self.declarations = []
 
@@ -1284,7 +1284,7 @@ class Declarations:
 __View__: afficheur de déclarations dans la console
 
 ```python
-class DeclarationDisplay:
+class DeclarationDisplay: # view
     def __init__(self, declarations):
         self.declarations = declarations
 
@@ -1299,7 +1299,7 @@ class DeclarationDisplay:
 <!-- __Controller__: interface console pour ajouter des personnes -->
 
 ```python
-class DeclarationInterface:
+class DeclarationInterface: # controller
     def __init__(self):
         self.model = Declarations()
         self.display = DeclarationDisplay(self.model.declarations)
@@ -1309,19 +1309,16 @@ class DeclarationInterface:
             command = input("Enter command (q to quit): ")
             if command == "q":
                 break
-            elif command == "new person":
-                self.get_name_and_declare(self.model.new_person)
+            name = input("Enter name: ")
+            if command == "new person":
+                self.model.new_person(name)
             elif command == "new container":
-                self.get_name_and_declare(self.model.new_container)
+                self.model.new_container(name)
             elif command == "add person":
-                self.get_name_and_declare(self.model.add_person)
+                self.model.add_person(name)
             else:
                 print("Existing commands are:\n*new person\n*add person\n*new container")
             self.display.display()
-
-    def get_name_and_declare(self, method):
-        name = input("Enter name: ")
-        method(name)
 ```
 
 ----
@@ -1335,6 +1332,35 @@ interface.run()
 
 __Démo__
 
+----
+
+#### Avantages
+
+* séparation des préoccupations
+* modularité
+* structure simple et claire
+
+Communément utilisé pour les applications graphiques ou web
+
+
+---
+
+### Autres __design patterns__
+
+* proxy (utiliser un objet pour en représenter un autre)
+* décorateur (comme en python)
+* singleton (forcer une classe à avoir toujours une instance)
+* stratégie (algorithme paramétrable)
+* etc...
+
+---
+
+### Résumé de cette section
+
+* les _design patterns_ sont des solutions à des problèmes courants
+* _adaptor_: adaptateur d'interface
+* _composite_: traiter les collections comme les objets individuels
+* _model-view-controller_: architecture pour les applications interactives
 
 ---
 

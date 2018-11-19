@@ -37,19 +37,16 @@ class DeclarationInterface:
             command = input("Enter command (q to quit): ")
             if command == "q":
                 break
-            elif command == "new person":
-                self.get_name_and_declare(self.model.new_person)
+            name = input("Enter name: ")
+            if command == "new person":
+                self.model.new_person(name)
             elif command == "new container":
-                self.get_name_and_declare(self.model.new_container)
+                self.model.new_container(name)
             elif command == "add person":
-                self.get_name_and_declare(self.model.add_person)
+                self.model.add_person(name)
             else:
                 print("Existing commands are:\n*new person\n*add person\n*new container")
             self.display.display()
-
-    def get_name_and_declare(self, method):
-        name = input("Enter name: ")
-        method(name)
 
 
 interface = DeclarationInterface()
