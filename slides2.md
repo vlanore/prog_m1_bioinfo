@@ -1375,8 +1375,15 @@ Communément utilisé pour les applications graphiques ou web
 
 ### Modèles à composants
 
+Présentation externe
+
+---
+
+### Principes
+
 * composition systématique
 * assemblage extérieur
+* cacher le contenu des objets
 
 ---
 
