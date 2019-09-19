@@ -1135,4 +1135,4 @@ Try to spend some time reading<br/>and improving your code
 
 ---
 
-Next monday, we will talk about __object-based design__<br/>and how to write good object-oriented design
+In 10 days, we will talk about __object-based design__<br/>and how to write good object-oriented design
