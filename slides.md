@@ -15,7 +15,7 @@ UE programmation orientée objet
 
 Master bioinfo
 
-Automne 2018
+Automne 2019
 
 
 ---
@@ -33,10 +33,10 @@ Send questions at:
 
 ### Software engineering courses
 
-|             |               |          |                        |
-|-------------|---------------|----------|------------------------|
-| today       | 9:45am to 1pm | quai 43  | good coding practices  |
-| next monday | 2pm to 5:15pm | prefa B1 | object-oriented design |
+|                 |               |                |                        |
+|-----------------|---------------|----------------|------------------------|
+| today           | 9:45am to 1pm | nautibus TD11  | good coding practices  |
+| monday sep 30th | 9:45am to 1pm | ??             | object-oriented design |
 
 
 ---
@@ -229,12 +229,15 @@ def read(fn):
 
 Quick testing:
 ```python
->>> execfile("test.py")
->>> read("~/data/example.fasta")
-[('SEQUENCE_1', 'MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR'),
- ('SEQUENCE_2', 'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
+In [1]: %run read_fasta.py
+In [2]: read("../data/example.fasta")
+Out[2]: 
+[('SEQUENCE_1',
+  'MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR'),
+ ('SEQUENCE_2',
+  'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
 ```
-
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 

@@ -1,0 +1,11 @@
+import sys
+from read_fasta import read_fasta
+
+expected_data = [('SEQUENCE_1', 'MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEGLVSVKVSDDFTIAAMRPSYLSYEDLDMTFVENEYKALVAELEKENEERR'),
+    ('SEQUENCE_2', 'SATVSEINSETDFVAKNDQFIALTKDTTAHIQSNSLQSVEELHSSTINGVKFEEYLKSQIATIGENLVVRRFATLKAGANGVVNGYIHTNGRVGVVIAAACDSAEVASKSRDLLRQICMH')]
+observed_data = read_fasta("data/example.fasta")
+if (expected_data != observed_data):
+    print("Test failed!")
+    sys.exit(1)
+else:
+    print("Test succeeded!")
