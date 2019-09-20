@@ -1,7 +1,7 @@
 import logging
 import sys
 logging.basicConfig(format='\033[1m%(asctime)s -\033[0m \033[1m\033[32m%(levelname)s\033[0m in file \033[1m%(filename)s\033[0m, line \033[1m%(lineno)d\033[0m (function \033[1m%(funcName)s\033[0m)\n\t%(message)s\n',
-    level=logging.WARNING, datefmt='%H:%M:%S')
+    level=logging.DEBUG, datefmt='%H:%M:%S')
 
 def read_fasta(fasta_filename):
     """A function that reads the fasta file located at fn
