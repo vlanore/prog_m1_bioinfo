@@ -900,8 +900,8 @@ Risque de conflit sur les définitions
 
 ### Résumés des mises en garde
 
-* ne pas hériter quand `F` n'est pas une spécialisation de `M`
-    * principe de substitution de Liskov
+* attention à ne pas hériter juste pour récupérer une fonctionnalité
+    <!-- * principe de substitution de Liskov -->
 * éviter l'héritage multiple
 * éviter d'avoir plusieurs hiérarchies qui se mélangent
 
