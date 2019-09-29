@@ -1137,6 +1137,12 @@ a.set_width(2)
 assert(a.width * a.length == 2)
 ```
 
+----
+
+#### Les bateaux ne sont pas des hélipads
+
+<img src="img/heliboat.jpg" alt="drawing" style="width:500px;"/>
+
 ---
 
 ### Principe de ségrégation d'interfaces
