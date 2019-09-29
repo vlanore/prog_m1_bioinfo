@@ -1069,7 +1069,13 @@ class ReportPrinter:
         f.close()
 ```
 
-Deux préoccupations
+Deux préoccupations :
+* formatter un rapport
+* écrire dans un fichier
+
+----
+
+
 
 ---
 
