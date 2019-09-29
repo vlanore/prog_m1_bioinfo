@@ -1027,9 +1027,11 @@ Par exemple, plutôt que d'avoir
 
 ---
 
+### Principes SOLID 
+
 > Les principes __SOLID__ sont un ensemble de principes pour concevoir des applications orientées objet plus simples à comprendre.
 
-Les lettres SOLID sont un moyen mnémotechnique pour se rappeler des 5 principes :
+Moyen mnémotechnique pour se rappeler des 5 principes :
 * **S**ingle Responsability Principle
 * **O**pen-closed Principle
 * **L**iskov Substitution Principle
@@ -1038,7 +1040,15 @@ Les lettres SOLID sont un moyen mnémotechnique pour se rappeler des 5 principes
 
 ---
 
-#### Principe de substitution de Liskov
+### Principe de responsabilité unique
+
+> Une classe ne doit changer que pour une seule raison
+
+Autre façon de le dire : chaque classe doit être axée sur une et une seule préoccupation.
+
+---
+
+### Principe de substitution de Liskov
 
 Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
  
