@@ -901,6 +901,7 @@ Risque de conflit sur les définitions
 ### Résumés des mises en garde
 
 * attention à ne pas hériter juste pour récupérer une fonctionnalité
+    * la classe fille doit être un *cas particulier* de la classe mère
     <!-- * principe de substitution de Liskov -->
 * éviter l'héritage multiple
 * éviter d'avoir plusieurs hiérarchies qui se mélangent
@@ -1049,6 +1050,26 @@ __Autre façon de le dire :__ chaque classe doit être axée sur<br/>une et une 
 ----
 
 <img src="img/Solid.jpg" alt="drawing" style="width:700px;"/>
+
+---
+
+#### Exemple
+
+```python
+class ReportPrinter:
+    def __init__(self, things, people, my_file):
+        self.nb_things = things
+        self.nb_people = people
+        self.my_file = my_file
+
+    def display(self):
+        report = "Today, {} things happened to {} people".format(self.nb_things, self.nb_people)
+        f = open(self.my_file, 'a')
+        f.write(report)
+        f.close()
+```
+
+Deux préoccupations
 
 ---
 
