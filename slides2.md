@@ -152,7 +152,7 @@ Une méthode peut accéder aux attributs de l'objet.
 class MyFloat:
     def __init__(self, value):
         self.real = value
-    
+
     def is_integer(self):
         return (self.real - float(int(self.real))) == 0
 ```
@@ -162,7 +162,7 @@ class MyFloat:
 #### Déclaration de méthode
 
 ```python
-class MyFloat:    
+class MyFloat:
     def is_integer(self):
         return (self.real - float(int(self.real))) == 0
 ```
@@ -426,7 +426,7 @@ class List3:
     "List with 3 elements"
     def __init__(self, a, b, c):
         self.value = [a, b, c]
-    
+
     def count(self, value):
         result = 0
         for element in self.value:
@@ -529,7 +529,7 @@ class Addable(ABC):
     @abstractmethod
     def add(self, other):
         pass
-    
+
     @staticmethod
     @abstractmethod
     def zero():
@@ -675,7 +675,7 @@ class Vehicle(ABC):
     @abstractmethod
     def terrain(self):
         pass
-    
+
     @abstractmethod
     def speed(self):
         pass
@@ -710,7 +710,7 @@ class Beetle(Car):
 
     def nb_doors(self):
         return 3
-        
+
     def speed(self):
         return 100
 ```
@@ -764,7 +764,7 @@ class Beetle(Car):
 
     def nb_doors(self):
         return 3
-        
+
     def speed(self):
         return 100
 ```
@@ -1027,7 +1027,7 @@ Par exemple, plutôt que d'avoir
 
 ---
 
-### Principes SOLID 
+### Principes SOLID
 
 > Les principes __SOLID__ sont un ensemble de principes pour concevoir des applications orientées objet plus simples à comprendre.
 
@@ -1044,15 +1044,45 @@ Moyen mnémotechnique pour se rappeler des 5 principes :
 
 > Une classe ne doit changer que pour une seule raison
 
-Autre façon de le dire : chaque classe doit être axée sur une et une seule préoccupation.
+Autre façon de le dire : chaque classe doit être axée sur<br/>une et une seule préoccupation.
+
+---
+
+### Principe ouvert/fermé
+
+> Une classe doit être ouverte à l'extension et fermée à la modification
+
+* L'ouverture à l'extension permet d'améliorer ses fonctionnalités au fil du temps.
+* La fermeture à la modification permet de garantir que les propriétés de la classe restent vraies.
 
 ---
 
 ### Principe de substitution de Liskov
 
-Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
- 
- 
+> Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
+
+Objectif : restreindre l'héritage à un cas qui a de bonnes propriétés.
+
+---
+
+### Principe de ségrégation d'interfaces
+
+> Une classe ne devrait pas dépendre d'interfaces qu'elle n'utilise pas
+
+Autre façon de le dire : il vaut plein d'interfaces spécialisées qu'une seule interface généraliste.
+
+Objectif : minimiser le couplage.
+
+---
+
+### Principe d'inversion des dépendances
+
+> Les abstractions ne doivent pas dépendre des détails, les détails doivent dépendre des abstractions.
+
+Autre façon de le dire : il vaut mieux dépendre de choses de haut niveau.
+
+Objectif : minimiser le couplage.
+
 ---
 
 <!--=================================================================================================== -->
@@ -1163,7 +1193,7 @@ class Stringable(ABC):
 class Person(Stringable):
     def __init__(self, name):
         self.name = name
-    
+
     def to_string(self):
         return "Person named {}".format(self.name)
 ```
@@ -1219,7 +1249,7 @@ class PeopleSet(Stringable, Countable):
 class Person(PeopleSet):
     def __init__(self, name):
         self.name = name
-    
+
     def to_string(self):
         return self.name
 
