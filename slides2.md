@@ -1102,7 +1102,7 @@ class Rectangle:
     def __init__(self):
         self.length = 1
         self.width = 1
-    
+
     def set_width(self, width):
         self.width = width
 
@@ -1111,11 +1111,7 @@ class Rectangle:
 ```
 
 ```python
-class Square:
-    def __init__(self):
-        self.length = 1
-        self.width = 1
-    
+class Square(Rectangle):
     def set_width(self, width):
         self.width = width
         self.length = width
@@ -1123,6 +1119,22 @@ class Square:
     def set_length(self, length):
         self.width = length
         self.length = length
+```
+
+----
+
+#### Les carrés ne sont pas des rectangles
+
+```python
+a = Rectangle()
+a.set_width(2)
+assert(a.width * a.length == 2)
+```
+
+```python
+a = Square()
+a.set_width(2)
+assert(a.width * a.length == 2)
 ```
 
 ---
