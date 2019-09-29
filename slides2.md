@@ -866,12 +866,6 @@ __Problème__: un bateau avec un hélipad n'est pas un hélipad
 * le typage / la taxonomie n'a plus aucun sens
 * encourage l'héritage multiple
 
-----
-
-#### Principe de substitution de Liskov
-
-Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
-
 ---
 
 ### L'héritage multiple est dangereux
@@ -1023,6 +1017,32 @@ Par exemple, plutôt que d'avoir
 * pour faire des modifications simples au comportement d'une classe (`Beetle` -> `BrokenBeetle`)
 * quand un programme s'écrit bien avec<br/>une seule hiérarchie de classes
 
+---
+
+<!--=================================================================================================== -->
+## <h2 style="color:white;">Principes SOLID</h2>
+<!--=================================================================================================== -->
+<!-- .slide: style="color:white" -->
+<!-- .slide: data-background="img/code.png" -->
+
+---
+
+> Les principes __SOLID__ sont un ensemble de principes pour concevoir des applications orientées objet plus simples à comprendre.
+
+Les lettres SOLID sont un moyen mnémotechnique pour se rappeler des 5 principes :
+* **S**ingle Responsability Principle
+* **O**pen-closed Principle
+* **L**iskov Substitution Principle
+* **I**nterface Segregation Principle
+* **D**ependency Inversion Principle
+
+---
+
+#### Principe de substitution de Liskov
+
+Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
+ 
+ 
 ---
 
 <!--=================================================================================================== -->
