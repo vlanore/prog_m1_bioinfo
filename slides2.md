@@ -1070,13 +1070,9 @@ class ReportPrinter:
         f.close()
 ```
 
-Deux préoccupations :
+Deux préoccupations (deux raisons de changer) :
 * formatter un rapport
 * écrire dans un fichier
-
-----
-
-
 
 ---
 
@@ -1098,6 +1094,36 @@ __Objectif :__ restreindre l'héritage à un cas<br/>qui a de bonnes propriété
 ----
 
 <img src="img/soLid.jpg" alt="drawing" style="width:700px;"/>
+
+----
+
+```python
+class Rectangle:
+    def __init__(self):
+        self.length = 1
+        self.width = 1
+    
+    def set_width(self, width):
+        self.width = width
+
+    def set_length(self, length):
+        self.length = length
+```
+
+```python
+class Square:
+    def __init__(self):
+        self.length = 1
+        self.width = 1
+    
+    def set_width(self, width):
+        self.width = width
+        self.length = width
+
+    def set_length(self, length):
+        self.width = length
+        self.length = length
+```
 
 ---
 
