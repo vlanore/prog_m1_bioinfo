@@ -1085,6 +1085,19 @@ __Objectif :__ minimiser le couplage.
 
 ---
 
+### Résumé de cette section
+
+Principes SOLID :
+* **S**ingle Responsability Principle
+* **O**pen-closed Principle
+* **L**iskov Substitution Principle
+* **I**nterface Segregation Principle
+* **D**ependency Inversion Principle
+
+Règles pour écrire des codes objets faiblement couplés.
+
+---
+
 <!--=================================================================================================== -->
 ## <h2 style="color:white;">Les _design patterns_</h2>
 <!--=================================================================================================== -->
