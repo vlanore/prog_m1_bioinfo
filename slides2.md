@@ -1051,7 +1051,7 @@ __Autre façon de le dire :__ chaque classe doit être axée sur<br/>une et une 
 
 <img src="img/Solid.jpg" alt="drawing" style="width:700px;"/>
 
----
+----
 
 #### Exemple
 
