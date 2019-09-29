@@ -1046,6 +1046,10 @@ Moyen mnémotechnique pour se rappeler des 5 principes :
 
 __Autre façon de le dire :__ chaque classe doit être axée sur<br/>une et une seule préoccupation.
 
+----
+
+<img src="img/Solid.jpg" alt="drawing" style="width:700px;"/>
+
 ---
 
 ### Principe ouvert/fermé
@@ -1087,7 +1091,7 @@ __Objectif :__ minimiser le couplage.
 
 ### Résumé de cette section
 
-Principes SOLID :
+Présenté les principes __SOLID__ :
 * **S**ingle Responsability Principle
 * **O**pen-closed Principle
 * **L**iskov Substitution Principle
