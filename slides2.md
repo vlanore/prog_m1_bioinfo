@@ -1091,6 +1091,10 @@ __Autre façon de le dire :__ il vaut mieux dépendre<br/>de choses de haut nive
 
 __Objectif :__ minimiser le couplage.
 
+----
+
+<img src="img/soliD.jpg" alt="drawing" style="width:700px;"/>
+
 ---
 
 ### Résumé de cette section
