@@ -1044,7 +1044,7 @@ Moyen mnémotechnique pour se rappeler des 5 principes :
 
 > Une classe ne doit changer que pour une seule raison
 
-Autre façon de le dire : chaque classe doit être axée sur<br/>une et une seule préoccupation.
+__Autre façon de le dire :__ chaque classe doit être axée sur<br/>une et une seule préoccupation.
 
 ---
 
@@ -1061,7 +1061,7 @@ Autre façon de le dire : chaque classe doit être axée sur<br/>une et une seul
 
 > Une classe __F__ ne doit hériter d'une classe __M__ que si tout objet de classe __M__ peut être remplacé par un objet de classe __F__
 
-Objectif : restreindre l'héritage à un cas qui a de bonnes propriétés.
+__Objectif :__ restreindre l'héritage à un cas<br/>qui a de bonnes propriétés.
 
 ---
 
@@ -1069,9 +1069,9 @@ Objectif : restreindre l'héritage à un cas qui a de bonnes propriétés.
 
 > Une classe ne devrait pas dépendre d'interfaces qu'elle n'utilise pas
 
-Autre façon de le dire : il vaut plein d'interfaces spécialisées qu'une seule interface généraliste.
+__Autre façon de le dire :__ il vaut mieux plein d'interfaces spécialisées qu'une seule interface généraliste.
 
-Objectif : minimiser le couplage.
+__Objectif :__ minimiser le couplage.
 
 ---
 
@@ -1079,9 +1079,9 @@ Objectif : minimiser le couplage.
 
 > Les abstractions ne doivent pas dépendre des détails, les détails doivent dépendre des abstractions.
 
-Autre façon de le dire : il vaut mieux dépendre de choses de haut niveau.
+__Autre façon de le dire :__ il vaut mieux dépendre de choses de haut niveau.
 
-Objectif : minimiser le couplage.
+__Objectif :__ minimiser le couplage.
 
 ---
 
