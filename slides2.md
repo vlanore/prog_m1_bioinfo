@@ -1062,8 +1062,9 @@ class ReportPrinter:
         self.nb_people = people
         self.my_file = my_file
 
-    def display(self):
-        report = "Today, {} things happened to {} people".format(self.nb_things, self.nb_people)
+    def write(self):
+        report = "Today, {} things happened to {} people\n"
+        report.format(self.nb_things, self.nb_people)
         f = open(self.my_file, 'a')
         f.write(report)
         f.close()
