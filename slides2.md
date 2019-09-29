@@ -1079,7 +1079,7 @@ __Objectif :__ minimiser le couplage.
 
 > Les abstractions ne doivent pas dépendre des détails, les détails doivent dépendre des abstractions.
 
-__Autre façon de le dire :__ il vaut mieux dépendre de choses de haut niveau.
+__Autre façon de le dire :__ il vaut mieux dépendre<br/>de choses de haut niveau.
 
 __Objectif :__ minimiser le couplage.
 
