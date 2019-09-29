@@ -1067,6 +1067,10 @@ __Autre façon de le dire :__ chaque classe doit être axée sur<br/>une et une 
 
 __Objectif :__ restreindre l'héritage à un cas<br/>qui a de bonnes propriétés.
 
+----
+
+<img src="img/soLid.jpg" alt="drawing" style="width:700px;"/>
+
 ---
 
 ### Principe de ségrégation d'interfaces
