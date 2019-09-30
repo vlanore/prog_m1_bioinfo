@@ -1198,10 +1198,49 @@ sender.send(filehandler)
 
 #### Problèmes
 
-`ReportSender` dépend du fait que `MyFile` utilise un fichier python
+`ReportSender` dépend du fait que `MyFile` utilise un fichier
 * dépendance de bas niveau (e.g. besoin de `.close()`)
 * interface pas claire
 * pourrait fonctionner avec d'autres choses qu'un fichier
+
+----
+
+#### Dépendance à une abstraction
+
+```python
+class StringHandler(ABC):
+    @abstractmethod
+    def handle_string(self, text):
+        pass
+
+
+class ReportSender:
+    def __init__(self, thi, per):
+        self.things = thi
+        self.persons = per
+
+    def send(self, str_handler):
+        assert issubclass(type(str_handler), StringHandler)
+        report = "Today, {} things happened to {} people\n"\
+            .format(self.things, self.persons)
+        str_handler.handle_string(report)
+```
+
+----
+
+```python
+class MyFile(StringHandler):
+    def handle_string(self, text):
+        f = open("myfile.txt", 'a')
+        f.write(text)
+        f.close()
+```
+
+```python
+sender = ReportSender(3, 5)
+filehandler = MyFile()
+sender.send(filehandler)
+```
 
 ---
 
