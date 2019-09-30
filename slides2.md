@@ -1083,6 +1083,23 @@ Deux préoccupations (deux raisons de changer) :
 * L'ouverture à l'extension permet d'améliorer ses fonctionnalités au fil du temps.
 * La fermeture à la modification permet de garantir que les propriétés de la classe restent vraies.
 
+----
+
+#### Ouverture à l'extension
+
+Il faut pouvoir étendre la classe _sans modifier le code existant_
+
+Par ex. en rajoutant des attributs, en héritant de la classe...
+
+----
+
+#### Fermeture à la modification
+
+Dans de nombreux langages, il est possible d'__interdire__<br/>de modifier la classe (par ex. C++, java)
+
+* permet de garantir les propriétés de la classe
+* oblige le développeur à réfléchir<br/>à l'interface (usage et extension)
+
 ---
 
 ### Principe de substitution de Liskov
@@ -1228,6 +1245,8 @@ class ReportSender:
 
 ----
 
+#### Suite de l'exemple
+
 ```python
 class MyFile(StringHandler):
     def handle_string(self, text):
@@ -1241,6 +1260,14 @@ sender = ReportSender(3, 5)
 filehandler = MyFile()
 sender.send(filehandler)
 ```
+
+----
+
+#### Avantages
+
+`ReportSender` n'a pas besoin de connaître<br/>les détails relatifs aux fichiers.
+
+On pourrait remplacer l'objet `MyFile` par n'importe quel<br/>autre objet qui implémente `StringHandler`.
 
 ---
 
