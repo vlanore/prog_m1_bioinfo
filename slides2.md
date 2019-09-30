@@ -1167,6 +1167,42 @@ __Objectif :__ minimiser le couplage.
 
 <img src="img/soliD.jpg" alt="drawing" style="width:700px;"/>
 
+----
+
+#### Exemple
+
+```python
+class ReportSender:
+    def __init__(self, thi, per):
+        self.things = thi
+        self.persons = per
+
+    def send(self, file_handler):
+        report = "Today, {} things happened to {} people\n"\
+            .format(self.things, self.persons)
+        file_handler.file.write(report)
+        file_handler.file.close()
+
+class MyFile:
+    def __init__(self):
+        self.file = open("myfile.txt", 'a')
+```
+
+```python
+sender = ReportSender(3, 4)
+filehandler = MyFile()
+sender.send(filehandler)
+```
+
+----
+
+#### Problèmes
+
+`ReportSender` dépend du fait que `MyFile` utilise un fichier python
+* dépendance de bas niveau (e.g. besoin de `.close()`)
+* interface pas claire
+* pourrait fonctionner avec d'autres choses qu'un fichier
+
 ---
 
 ### Résumé de cette section
@@ -1556,9 +1592,11 @@ Présentation externe
 
 * rappels objets
 * polymorphisme
-* héritage, pour et contre
-* composition
-* interface
+* principes de base
+    * héritage pour et contre
+    * composition
+    * interfaces
+* principes SOLID
 * _design patterns_
 
 ----
@@ -1568,6 +1606,10 @@ Présentation externe
 --
 
 > Dans le doute, préférer les __interfaces__ aux hiérarchies de classes avec implémentation
+
+----
+
+> Les principes SOLID sont une bonne base pour écrire du code faiblement couplé.
 
 ----
 
