@@ -91,6 +91,16 @@ d'organisation et de planification d'un programme orienté objet.
 
 ---
 
+### Aujourd'hui
+
+* Rappels objet
+* Polymorphisme
+* Héritage, composition, interfaces
+* Principes SOLID
+* _Design patterns_
+
+---
+
 <!--=================================================================================================== -->
 ## <h2 style="color:white;">Rappels concepts objet</h2>
 <!--=================================================================================================== -->
