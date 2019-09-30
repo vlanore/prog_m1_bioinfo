@@ -1170,6 +1170,67 @@ __Autre façon de le dire :__ il vaut mieux plein d'interfaces spécialisées qu
 
 __Objectif :__ minimiser le couplage.
 
+----
+
+```python
+class MyBigInterface(ABC):
+    @abstractmethod
+    def print_report(self, text):
+        pass
+
+    @abstractmethod
+    def handle_connections(self, text):
+        pass
+
+    @abstractmethod
+    def make_coffee(self, text):
+        pass
+
+    @abstractmethod
+    def write_report(self, text):
+        pass
+
+    @abstractmethod
+    def install_printer(self, text):
+        pass
+
+```
+
+----
+
+#### Pas mal de défauts
+
+* doit fournir des impléms "bidons" pour les méthodes inutilisées
+* doit être mis à jour dès que l'interface change (probable puisque grande)
+* ce que fait l'objet n'est pas clair
+
+----
+
+```python
+class ReportHandler(ABC):
+    @abstractmethod
+    def print_report(self, text):
+        pass
+
+    @abstractmethod
+    def write_report(self, text):
+        pass
+
+class ConnectionHandler(ABC):
+    @abstractmethod
+    def handle_connections(self, text):
+        pass
+
+class ControlRobot(ABC):
+    @abstractmethod
+    def make_coffee(self, text):
+        pass
+
+    @abstractmethod
+    def install_printer(self, text):
+        pass
+```
+
 ---
 
 ### Principe d'inversion des dépendances
